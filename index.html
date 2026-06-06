@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Welcome to My Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="prefetch" href="home.html" />
+    <link rel="preload" href="Dwight entry.gif" as="image" />
+    <link rel="preload" href="Cint.png" as="image" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="profile-screen" aria-labelledby="screen-title">
+      <section class="profile-panel">
+        <div class="brand welcome-brand" aria-label="Nandan portfolio">WELCOME TO NANDAN'S WORLD</div>
+        <h1 id="screen-title">Enter Portfolio</h1>
+
+        <a class="profile-card" href="home.html" aria-label="Enter portfolio">
+          <span class="avatar-frame">
+            <img src="Nandan_Login.jpg" alt="Nandan profile" />
+          </span>
+        </a>
+      </section>
+    </main>
+
+    <script>
+      const profileLink = document.querySelector(".profile-card");
+
+      profileLink.addEventListener("click", (event) => {
+        if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) {
+          return;
+        }
+
+        event.preventDefault();
+        document.body.classList.add("entering-portfolio");
+
+        window.setTimeout(() => {
+          window.location.href = profileLink.href;
+        }, 720);
+      });
+    </script>
+  </body>
+</html>

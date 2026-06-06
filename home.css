@@ -1,0 +1,24 @@
+/* Fix for Skill Cards to prevent zooming and black borders */
+.skill-card {
+  background: none !important;
+  box-shadow: none !important;
+  border: none !important;
+  overflow: hidden;
+  justify-content: center !important;
+  padding: 0 !important;
+  align-items: center !important;
+}
+.skill-card::before {
+  display: none !important; /* Removes the dark gradient overlay from styles.css */
+}
+.skill-card .title-logo {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: contain !important;
+  position: relative !important;
+}
+/* Keep icons large but bring them closer together */
+[aria-labelledby="skills-title"] .title-row {
+  gap: 10px !important;
+  grid-auto-columns: minmax(450px, 35vw) !important;
+}
