@@ -12,10 +12,31 @@
     />
     <link rel="prefetch" href="home.html" />
     <link rel="preload" href="farming laptop.mp4" as="video" />
-    <link rel="preload" href="Cint.png" as="image" />
+    <link rel="preload" href="Cint_transparent.png" as="image" />
     <link rel="stylesheet" href="styles.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
   </head>
   <body>
+    <div id="dotted-surface" style="position: fixed; inset: 0; pointer-events: none; z-index: 0;"></div>
+    
+    <!-- Theme Toggle Button -->
+    <button id="theme-toggle" style="position: fixed; top: 20px; right: 20px; z-index: 100; background: rgba(0, 0, 0, 0.2); border: 2px solid rgba(0, 0, 0, 0.3); border-radius: 50%; width: 50px; height: 50px; display: flex; align-items: center; justify-content: center; cursor: pointer; font-size: 24px; transition: all 0.3s ease; backdrop-filter: blur(10px); padding: 0;">
+      <svg id="sun-icon" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color: #000; display: none;">
+        <circle cx="12" cy="12" r="5"></circle>
+        <line x1="12" y1="1" x2="12" y2="3"></line>
+        <line x1="12" y1="21" x2="12" y2="23"></line>
+        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+        <line x1="1" y1="12" x2="3" y2="12"></line>
+        <line x1="21" y1="12" x2="23" y2="12"></line>
+        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+      </svg>
+      <svg id="moon-icon" width="28" height="28" viewBox="0 0 24 24" fill="currentColor" style="color: #000; display: block;">
+        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+      </svg>
+    </button>
+
     <main class="profile-screen" aria-labelledby="screen-title">
       <section class="profile-panel">
         <div class="brand welcome-brand" aria-label="Nandan portfolio">WELCOME TO NANDAN'S WORLD</div>
@@ -44,6 +65,160 @@
           window.location.href = profileLink.href;
         }, 720);
       });
+
+      // DottedSurface Three.js Animation
+      (function initDottedSurface() {
+        const container = document.getElementById('dotted-surface');
+        if (!container) return;
+
+        // Detect dark mode early
+        let isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches || localStorage.getItem('theme') === 'dark';
+
+        const SEPARATION = 150;
+        const AMOUNTX = 40;
+        const AMOUNTY = 60;
+
+        // Scene setup
+        const scene = new THREE.Scene();
+        const bgColor = isDarkMode ? 0xffffff : 0xf5f5f5;
+        scene.fog = new THREE.Fog(bgColor, 2000, 10000);
+
+        const camera = new THREE.PerspectiveCamera(
+          60,
+          window.innerWidth / window.innerHeight,
+          1,
+          10000
+        );
+        camera.position.set(0, 355, 1220);
+
+        const renderer = new THREE.WebGLRenderer({
+          alpha: true,
+          antialias: true
+        });
+        renderer.setPixelRatio(window.devicePixelRatio);
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        renderer.setClearColor(bgColor, 0);
+
+        container.appendChild(renderer.domElement);
+
+        // Create particles
+        const positions = [];
+        const colors = [];
+
+        let dotColor = isDarkMode ? [200, 200, 200] : [50, 50, 50];
+
+        // Create geometry
+        const geometry = new THREE.BufferGeometry();
+
+        for (let ix = 0; ix < AMOUNTX; ix++) {
+          for (let iy = 0; iy < AMOUNTY; iy++) {
+            const x = ix * SEPARATION - (AMOUNTX * SEPARATION) / 2;
+            const y = 0;
+            const z = iy * SEPARATION - (AMOUNTY * SEPARATION) / 2;
+
+            positions.push(x, y, z);
+            colors.push(...dotColor);
+          }
+        }
+
+        geometry.setAttribute(
+          'position',
+          new THREE.Float32BufferAttribute(positions, 3)
+        );
+        geometry.setAttribute('color', new THREE.Float32BufferAttribute(colors, 3));
+
+        // Create material
+        const material = new THREE.PointsMaterial({
+          size: 8,
+          vertexColors: true,
+          transparent: true,
+          opacity: 0.8,
+          sizeAttenuation: true
+        });
+
+        // Create points
+        const points = new THREE.Points(geometry, material);
+        scene.add(points);
+
+        let count = 0;
+        let animationId;
+
+        // Animation loop
+        const animate = () => {
+          animationId = requestAnimationFrame(animate);
+
+          const positionAttribute = geometry.attributes.position;
+          const posArray = positionAttribute.array;
+
+          let i = 0;
+          for (let ix = 0; ix < AMOUNTX; ix++) {
+            for (let iy = 0; iy < AMOUNTY; iy++) {
+              const index = i * 3;
+
+              // Animate Y position with sine waves
+              posArray[index + 1] =
+                Math.sin((ix + count) * 0.3) * 50 +
+                Math.sin((iy + count) * 0.5) * 50;
+
+              i++;
+            }
+          }
+
+          positionAttribute.needsUpdate = true;
+          renderer.render(scene, camera);
+          count += 0.1;
+        };
+
+        // Handle resize
+        const handleResize = () => {
+          camera.aspect = window.innerWidth / window.innerHeight;
+          camera.updateProjectionMatrix();
+          renderer.setSize(window.innerWidth, window.innerHeight);
+        };
+
+        window.addEventListener('resize', handleResize);
+        animate();
+
+        // Theme toggle functionality
+        const themeToggle = document.getElementById('theme-toggle');
+        const sunIcon = document.getElementById('sun-icon');
+        const moonIcon = document.getElementById('moon-icon');
+        
+        const updateTheme = (dark) => {
+          isDarkMode = dark;
+          dotColor = dark ? [200, 200, 200] : [50, 50, 50];
+          
+          // Toggle icons
+          sunIcon.style.display = dark ? 'none' : 'block';
+          moonIcon.style.display = dark ? 'block' : 'none';
+          
+          themeToggle.style.background = dark ? 'rgba(255, 255, 255, 0.1)' : 'rgba(0, 0, 0, 0.15)';
+          themeToggle.style.borderColor = dark ? 'rgba(255, 255, 255, 0.3)' : 'rgba(0, 0, 0, 0.3)';
+          localStorage.setItem('theme', dark ? 'dark' : 'light');
+          
+          // Update scene background
+          const bgColor = dark ? 0xffffff : 0xf5f5f5;
+          scene.fog.color.setHex(bgColor);
+          renderer.setClearColor(bgColor, 0);
+          
+          // Update all particle colors
+          const colorAttribute = geometry.attributes.color;
+          const colorArray = colorAttribute.array;
+          for (let i = 0; i < colorArray.length; i += 3) {
+            colorArray[i] = dotColor[0];
+            colorArray[i + 1] = dotColor[1];
+            colorArray[i + 2] = dotColor[2];
+          }
+          colorAttribute.needsUpdate = true;
+        };
+
+        // Initialize theme toggle with correct icon
+        updateTheme(isDarkMode);
+
+        themeToggle.addEventListener('click', () => {
+          updateTheme(!isDarkMode);
+        });
+      })();
     </script>
   </body>
 </html>

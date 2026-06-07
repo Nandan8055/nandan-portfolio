@@ -1,24 +1,112 @@
-/* Fix for Skill Cards to prevent zooming and black borders */
-.skill-card {
-  background: none !important;
-  box-shadow: none !important;
-  border: none !important;
-  overflow: hidden;
-  justify-content: center !important;
-  padding: 0 !important;
+/* Custom resets and styles for Skill Cards */
+.title-card.skill-card {
+  aspect-ratio: 1 / 1 !important; /* Make skills cards square */
+  background: rgba(255, 255, 255, 0.03) !important;
+  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+  border-radius: 12px !important;
+  padding: 12px !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1) !important;
+  display: flex !important;
   align-items: center !important;
-}
-.skill-card::before {
-  display: none !important; /* Removes the dark gradient overlay from styles.css */
-}
-.skill-card .title-logo {
-  width: 100% !important;
-  height: 100% !important;
-  object-fit: contain !important;
+  justify-content: center !important;
+  overflow: hidden !important;
+  min-height: 0 !important;
+  min-width: 0 !important;
   position: relative !important;
 }
-/* Keep icons large but bring them closer together */
+
+.title-card.skill-card::before,
+.title-card.skill-card::after {
+  display: none !important;
+  content: none !important;
+}
+
+.title-card.skill-card .title-logo {
+  position: relative !important;
+  width: 90% !important;
+  height: 90% !important;
+  object-fit: contain !important;
+  display: block !important;
+  margin: 0 auto !important;
+  inset: auto !important;
+}
+
+/* Hover effects for skill cards */
+.title-card.skill-card:hover,
+.title-card.skill-card:focus-visible {
+  transform: translateY(-5px) scale(1.05) !important;
+  background: rgba(255, 255, 255, 0.07) !important;
+  border-color: var(--skill-accent, #e50914) !important;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2), 0 0 15px rgba(255, 255, 255, 0.05) !important;
+}
+
+/* Custom resets and styles for Favorite Books */
+.title-card.book-card {
+  aspect-ratio: 2 / 3 !important; /* standard book cover ratio */
+  background: #141414 !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  border-radius: 8px !important;
+  overflow: hidden !important;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3) !important;
+  position: relative !important;
+}
+
+.title-card.book-card::before,
+.title-card.book-card::after {
+  display: none !important;
+  content: none !important;
+}
+
+.title-card.book-card .title-logo {
+  position: absolute !important;
+  inset: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important; /* ensures covers are displayed without distortion, and fits the container */
+}
+
+/* Atomic Habits book cover is square (1:1), so using object-fit: contain ensures we see the entire book cover without cropping, with a neat background */
+.title-card.book-card[data-modal="book-atomic-habits"] .title-logo {
+  object-fit: contain !important;
+  background-color: #f7f7f7 !important; /* atomic habits cover has a white/light bg, so matching that makes it clean */
+}
+
+/* Hover effects for book cards */
+.title-card.book-card:hover,
+.title-card.book-card:focus-visible {
+  transform: translateY(-8px) scale(1.06) !important;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.45) !important;
+  border-color: rgba(255, 255, 255, 0.25) !important;
+}
+
+/* Keep columns compact and responsive for Skills & Books */
 [aria-labelledby="skills-title"] .title-row {
-  gap: 10px !important;
-  grid-auto-columns: minmax(450px, 35vw) !important;
+  grid-auto-columns: minmax(300px, 12vw) !important;
+  gap: 18px !important;
+  padding-bottom: 18px !important;
+}
+
+[aria-labelledby="books-title"] .title-row {
+  grid-auto-columns: minmax(160px, 11vw) !important;
+  gap: 18px !important;
+  padding-bottom: 18px !important;
+}
+
+/* Mobile responsive updates */
+@media (max-width: 560px) {
+  [aria-labelledby="skills-title"] .title-row,
+  [aria-labelledby="books-title"] .title-row {
+    grid-auto-columns: minmax(120px, 120px) !important;
+    gap: 12px !important;
+    padding-bottom: 12px !important;
+  }
+  
+  .title-card.skill-card {
+    border-radius: 8px !important;
+    padding: 8px !important;
+  }
+  
+  .title-card.book-card {
+    border-radius: 6px !important;
+  }
 }

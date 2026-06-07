@@ -312,33 +312,88 @@ const modalContent = {
     kicker: "Favorite Read",
     title: "Atomic Habits",
     role: "by James Clear",
-    image: "Books/atomic-habits.jpg",
+    image: "Books/Atomic Habits.jpg",
     points: [
       "A practical guide to building good habits and breaking bad ones.",
       "Emphasizes the power of 1% improvements and systems over goals.",
       "Great for understanding human behavior and personal productivity."
     ]
   },
-  "book-design-things": {
+  "book-7-habits": {
     kicker: "Favorite Read",
-    title: "The Design of Everyday Things",
-    role: "by Don Norman",
-    image: "Books/design-of-everyday-things.jpg",
+    title: "7 Habits of Highly Effective People",
+    role: "by Stephen R. Covey",
+    image: "Books/7 effective habits of highly effective people.jpg",
     points: [
-      "The 'bible' of user-centric design and cognitive psychology.",
-      "Teaches how users interact with technology and the importance of affordances and signifiers.",
-      "Directly applicable to product management and technical analysis."
+      "Focuses on timeless principles of fairness, integrity, honesty, and human dignity.",
+      "Teaches a proactive approach to personal and professional effectiveness.",
+      "A fundamental read for personal growth and leadership."
     ]
   },
-  "book-zero-to-one": {
+  "book-3-mistakes": {
     kicker: "Favorite Read",
-    title: "Zero to One",
-    role: "by Peter Thiel",
-    image: "Books/zero-to-one.jpg",
+    title: "The 3 Mistakes of My Life",
+    role: "by Chetan Bhagat",
+    image: "Books/The 3 Mistakes Of My Life.jpg",
     points: [
-      "Explores how to build companies that create new things rather than copying existing ones.",
-      "Focuses on vertical progress (0 to 1) vs horizontal progress (1 to n).",
-      "Provides a unique perspective on innovation and market monopolies."
+      "A story about business, cricket, and religion intertwining in the lives of three friends.",
+      "Highlights the importance of resilience and learning from failures.",
+      "An engaging narrative about ambition and friendship."
+    ]
+  },
+  "book-brief-history": {
+    kicker: "Favorite Read",
+    title: "A Brief History of Time",
+    role: "by Stephen Hawking",
+    image: "Books/a brief history of time book.jpg",
+    points: [
+      "Explores profound questions about the universe, space, and time.",
+      "Simplifies complex cosmological concepts for a broader audience.",
+      "A fascinating read that shifts perspectives on existence and reality."
+    ]
+  },
+  "book-compound-effect": {
+    kicker: "Favorite Read",
+    title: "The Compound Effect",
+    role: "by Darren Hardy",
+    image: "Books/compound effect.jpg",
+    points: [
+      "Demonstrates how small, consistent actions lead to massive results over time.",
+      "A highly practical framework for taking charge of your life and goals.",
+      "Reinforces the discipline of consistency in personal and professional habits."
+    ]
+  },
+  "book-how-to-talk": {
+    kicker: "Favorite Read",
+    title: "How to Talk to Anyone",
+    role: "by Leil Lowndes",
+    image: "Books/how to talk to anyone.jpg",
+    points: [
+      "Provides actionable techniques for successful communication in any situation.",
+      "Helps improve networking skills and build strong relationships quickly.",
+      "Very useful for client-facing roles and cross-functional collaboration."
+    ]
+  },
+  "book-rich-dad": {
+    kicker: "Favorite Read",
+    title: "Rich Dad Poor Dad",
+    role: "by Robert T. Kiyosaki",
+    image: "Books/rich dad poor dad.jpg",
+    points: [
+      "A foundational book on financial literacy and building wealth.",
+      "Contrasts different mindsets toward money, investing, and assets.",
+      "Encourages thinking like an investor rather than just an employee."
+    ]
+  },
+  "book-subtle-art": {
+    kicker: "Favorite Read",
+    title: "The Subtle Art of Not Giving a F*ck",
+    role: "by Mark Manson",
+    image: "Books/the subtle art of not giving a fck.jpg",
+    points: [
+      "A counterintuitive approach to living a good life by choosing what truly matters.",
+      "Focuses on accepting limitations and embracing realistic expectations.",
+      "A refreshing take on mental toughness and prioritizing personal values."
     ]
   }
 };
