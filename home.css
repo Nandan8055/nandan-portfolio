@@ -81,13 +81,13 @@
 
 /* Keep columns compact and responsive for Skills & Books */
 [aria-labelledby="skills-title"] .title-row {
-  grid-auto-columns: minmax(300px, 12vw) !important;
+  grid-auto-columns: minmax(200px, 14vw) !important;
   gap: 18px !important;
   padding-bottom: 18px !important;
 }
 
 [aria-labelledby="books-title"] .title-row {
-  grid-auto-columns: minmax(160px, 11vw) !important;
+  grid-auto-columns: minmax(200px, 13vw) !important;
   gap: 18px !important;
   padding-bottom: 18px !important;
 }
