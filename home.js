@@ -312,7 +312,7 @@ const modalContent = {
     kicker: "Portfolio Project",
     title: "NikithaNayana",
     role: "Personal Portfolio Website",
-    link: "#",
+    link: "https://nikithanayana.vercel.app/",
     linkLabel: "View Project",
     points: [
       "A clean and minimal personal portfolio website showcasing professional skills, projects, and achievements.",
