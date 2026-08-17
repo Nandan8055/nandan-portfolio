@@ -1,12 +1,47 @@
 :root {
   color-scheme: dark;
-  --bg: #080808;
+  --bg: #000000;
   --bg-soft: #141414;
+  --bg-card: #050505;
+  --bg-card-inner: #181818;
   --text: #f5f5f5;
   --muted: #9a9a9a;
   --red: #e50914;
   --red-deep: #a40810;
   --line: #333333;
+  --nav-bg: rgba(10, 10, 10, 0.72);
+  --nav-border: rgba(255, 255, 255, 0.08);
+  --nav-link-color: rgba(255, 255, 255, 0.6);
+  --nav-link-active-bg: rgba(255, 255, 255, 0.1);
+  --input-bg: #0a0a0a;
+  --input-border: rgba(255, 255, 255, 0.13);
+  --modal-bg: linear-gradient(180deg, #202020 0%, #111111 100%);
+  --modal-border: rgba(255, 255, 255, 0.16);
+  --modal-backdrop: rgba(0, 0, 0, 0.76);
+  --glow-indicator: #ffffff;
+  --corner-plus-color: #ffffff;
+}
+
+body.light-theme {
+  color-scheme: light;
+  --bg: #f8f9fa;
+  --bg-soft: #e9ecef;
+  --bg-card: #ffffff;
+  --bg-card-inner: #f1f3f5;
+  --text: #212529;
+  --muted: #6c757d;
+  --line: #dee2e6;
+  --nav-bg: rgba(255, 255, 255, 0.82);
+  --nav-border: rgba(0, 0, 0, 0.12);
+  --nav-link-color: rgba(0, 0, 0, 0.6);
+  --nav-link-active-bg: rgba(0, 0, 0, 0.06);
+  --input-bg: #ffffff;
+  --input-border: rgba(0, 0, 0, 0.15);
+  --modal-bg: linear-gradient(180deg, #ffffff 0%, #f8f9fa 100%);
+  --modal-border: rgba(0, 0, 0, 0.12);
+  --modal-backdrop: rgba(0, 0, 0, 0.45);
+  --glow-indicator: #e50914;
+  --corner-plus-color: #000000;
 }
 
 * {
@@ -24,10 +59,11 @@ body {
 
 body {
   margin: 0;
-  background: #000000;
+  background: var(--bg);
   color: var(--text);
   font-family: Inter, Arial, Helvetica, sans-serif;
   overflow-x: hidden;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 a {
@@ -42,8 +78,9 @@ a {
 }
 
 .home-screen {
-  background: #000000;
+  background: var(--bg);
   overflow: hidden;
+  transition: background-color 0.3s ease;
 }
 
 .profile-screen {
@@ -445,7 +482,8 @@ a {
 .netflix-row {
   margin: clamp(68px, 9vw, 110px) 0 0;
   padding: 0 clamp(22px, 4vw, 56px);
-  background: #000000;
+  background: var(--bg);
+  transition: background-color 0.3s ease;
 }
 
 
@@ -453,7 +491,8 @@ a {
 
 .netflix-row-last {
   padding-bottom: 78px;
-  background: #000000;
+  background: var(--bg);
+  transition: background-color 0.3s ease;
 }
 
 .netflix-row h2 {
@@ -530,11 +569,11 @@ a {
 .title-card {
   align-items: center;
   aspect-ratio: 16 / 9;
-  background: #050505;
-  border: 0;
+  background: var(--bg-card);
+  border: 1px solid var(--nav-border);
   border-radius: 6px;
   box-shadow: none;
-  color: #ffffff;
+  color: var(--text);
   cursor: pointer;
   display: flex;
   flex-direction: column;
@@ -544,7 +583,7 @@ a {
   padding: 0;
   position: relative;
   text-align: center;
-  transition: transform 180ms ease;
+  transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease, transform 180ms ease;
 }
 
 .title-card::before {
@@ -689,19 +728,20 @@ a {
 }
 
 .detail-backdrop {
-  background: rgba(0, 0, 0, 0.76);
+  background: var(--modal-backdrop);
   inset: 0;
   position: absolute;
+  transition: background-color 0.3s ease;
 }
 
 .detail-dialog {
   align-self: center;
   background:
-    linear-gradient(135deg, rgba(229, 9, 20, 0.18), transparent 36%),
-    linear-gradient(180deg, #202020 0%, #111111 100%);
-  border: 1px solid rgba(255, 255, 255, 0.16);
+    linear-gradient(135deg, rgba(229, 9, 20, 0.1), transparent 36%),
+    var(--modal-bg);
+  border: 1px solid var(--modal-border);
   border-radius: 8px;
-  box-shadow: 0 40px 140px rgba(0, 0, 0, 0.74);
+  box-shadow: 0 40px 140px rgba(0, 0, 0, 0.34);
   justify-self: center;
   max-height: min(82vh, 760px);
   max-width: min(92vw, 860px);
@@ -1115,19 +1155,21 @@ a {
 /* ─── Contact Section ─── */
 .contact-section {
   padding: clamp(68px, 9vw, 110px) clamp(22px, 4vw, 56px) clamp(60px, 8vw, 96px);
-  background: #000000;
+  background: var(--bg);
+  transition: background-color 0.3s ease;
 }
 
 
 /* The dark bordered card */
 .contact-card {
   position: relative;
-  background: #181818;
-  border: 1px solid rgba(255, 255, 255, 0.18);
+  background: var(--bg-card-inner);
+  border: 1px solid var(--nav-border);
   border-radius: 3px;
   max-width: 1060px;
   margin: 0 auto;
   padding: clamp(40px, 5vw, 68px) clamp(36px, 5vw, 68px);
+  transition: background-color 0.3s ease, border-color 0.3s ease;
 }
 
 /* + corner markers */
@@ -1135,7 +1177,7 @@ a {
   position: absolute;
   font-size: 1.35rem;
   font-weight: 200;
-  color: #ffffff;
+  color: var(--corner-plus-color);
   line-height: 1;
   width: 18px;
   height: 18px;
@@ -1144,6 +1186,7 @@ a {
   justify-content: center;
   opacity: 0.9;
   user-select: none;
+  transition: color 0.3s ease;
 }
 
 .cc-tl { top: -11px;  left: -9px; }
@@ -1247,10 +1290,10 @@ a {
 
 .contact-field input,
 .contact-field textarea {
-  background: #0a0a0a;
-  border: 1px solid rgba(255, 255, 255, 0.13);
+  background: var(--input-bg);
+  border: 1px solid var(--input-border);
   border-radius: 6px;
-  color: #f5f5f5;
+  color: var(--text);
   font-family: inherit;
   font-size: 0.95rem;
   line-height: 1.5;
@@ -1268,16 +1311,16 @@ a {
 .contact-field input:focus,
 .contact-field textarea:focus {
   outline: none;
-  border-color: rgba(255, 255, 255, 0.38);
-  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.05);
+  border-color: var(--text);
+  box-shadow: 0 0 0 3px var(--nav-link-active-bg);
 }
 
 /* Submit — white button matching 21st.dev reference */
 .contact-submit {
-  background: #ffffff;
+  background: var(--text);
   border: 0;
   border-radius: 6px;
-  color: #111111;
+  color: var(--bg);
   cursor: pointer;
   font-family: inherit;
   font-size: 0.97rem;
@@ -1285,13 +1328,13 @@ a {
   letter-spacing: 0.01em;
   padding: 13px 24px;
   width: 100%;
-  transition: background 140ms ease, transform 110ms ease;
+  transition: background 140ms ease, color 140ms ease, transform 110ms ease;
   margin-top: 4px;
 }
 
 .contact-submit:hover,
 .contact-submit:focus-visible {
-  background: #e8e8e8;
+  opacity: 0.88;
   outline: none;
   transform: translateY(-1px);
 }
@@ -1399,4 +1442,47 @@ a {
 .title-card[data-modal="nikithanayana"] .title-logo {
   transform: scale(1.22) !important;
   transform-origin: center center;
+}
+
+/* Sun/Moon Toggle Button Icon Visibility */
+#theme-toggle .sun-icon {
+  display: block;
+}
+#theme-toggle .moon-icon {
+  display: none;
+}
+body.light-theme #theme-toggle .sun-icon {
+  display: none;
+}
+body.light-theme #theme-toggle .moon-icon {
+  display: block;
+}
+
+/* Theme Toggle Button Style */
+.theme-toggle-btn {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: var(--nav-link-color);
+  padding: 6px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+.theme-toggle-btn:hover {
+  color: var(--text);
+  background: var(--nav-link-active-bg);
+}
+
+/* Light Theme Video Overlay */
+body.light-theme .hero-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.22);
+  z-index: 1;
+  pointer-events: none;
+  transition: background-color 0.3s ease;
 }

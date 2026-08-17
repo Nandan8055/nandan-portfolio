@@ -17,6 +17,15 @@
     <link rel="preload" href="farming laptop.mp4" as="video" />
     <link rel="preload" href="Cint_transparent.png" as="image" />
     <link rel="stylesheet" href="styles.css" />
+    <script>
+      (function() {
+        const savedTheme = localStorage.getItem("theme");
+        const prefersLight = window.matchMedia("(prefers-color-scheme: light)").matches;
+        if (savedTheme === "light" || (!savedTheme && prefersLight)) {
+          document.body.classList.add("light-theme");
+        }
+      })();
+    </script>
     <style>
       #spider-canvas {
         position: fixed;
@@ -214,9 +223,10 @@
 
           ctx.clearRect(0, 0, w, h);
 
-          // White dots with crimson-red lines matching portfolio's color scheme
-          ctx.fillStyle = "rgba(255, 255, 255, 0.75)";
-          ctx.strokeStyle = "rgba(229, 9, 20, 0.35)";
+          // Adaptive dots and lines matching portfolio theme
+          const isLight = document.body.classList.contains("light-theme");
+          ctx.fillStyle = isLight ? "rgba(0, 0, 0, 0.75)" : "rgba(255, 255, 255, 0.75)";
+          ctx.strokeStyle = isLight ? "rgba(229, 9, 20, 0.55)" : "rgba(229, 9, 20, 0.35)";
           ctx.lineWidth = 1.1;
 
           t /= 1000;
