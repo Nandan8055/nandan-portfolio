@@ -1,0 +1,378 @@
+# What is Product Analytics? A Practical Guide
+
+Building a product is only half the job.
+
+Once people start using it, an important question appears:
+
+> **Are users actually getting value from the product?**
+
+This is where **product analytics** comes in.
+
+Product analytics is the process of collecting and analyzing data about how users interact with a digital product. It helps product teams understand user behavior, identify problems, measure feature adoption, and make better decisions about what to improve or build next.
+
+## What is Product Analytics?
+
+**Product analytics focuses on what users do inside a product.**
+
+For a website or application, this might include:
+
+* Signing up
+* Completing onboarding
+* Clicking a button
+* Using a feature
+* Submitting a form
+* Searching for something
+* Completing a purchase
+* Encountering an error
+* Returning to the product
+
+These actions can be captured as **events** and analyzed to understand how users move through the product.
+
+A simple way to think about it is:
+
+> **Product analytics turns user activity into information that helps teams improve the product.**
+
+## Why Does Product Analytics Matter?
+
+Without product analytics, product decisions can easily become based on assumptions.
+
+A team might think:
+
+> "Users probably love this feature."
+
+But the data might show that only a small percentage of users actually use it.
+
+Or a team might believe:
+
+> "Our onboarding process works well."
+
+But the data could reveal that a large percentage of new users leave before completing it.
+
+Product analytics helps teams compare what they **think** is happening with what the data shows is actually happening.
+
+## What is Event Tracking?
+
+**Event tracking** is one of the foundations of product analytics.
+
+An event represents something that happened inside a product.
+
+For example:
+
+```text
+User Signed Up
+        ↓
+Started Onboarding
+        ↓
+Completed Onboarding
+        ↓
+Used Feature A
+        ↓
+Upgraded to Premium
+```
+
+Each action can be recorded as an event along with information such as the time, user, device, plan, or other relevant properties.
+
+These events can then be analyzed individually or combined to understand larger user journeys.
+
+## What Questions Can Product Analytics Answer?
+
+Product analytics can help answer questions such as:
+
+* Which features are used most frequently?
+* Where do users drop out of onboarding?
+* How many users complete a purchase?
+* Which features are associated with retention?
+* How often do users return?
+* Which user groups behave differently?
+* Are users adopting a newly released feature?
+* Where are users experiencing friction?
+
+The goal isn't simply to collect these numbers.
+
+The goal is to use them to understand **what is happening and why it matters**.
+
+## What is Funnel Analysis?
+
+A **funnel** represents a series of steps that users are expected to complete.
+
+For example, an e-commerce product might have:
+
+**Product View → Add to Cart → Checkout → Payment → Purchase**
+
+Imagine 10,000 users view a product:
+
+* 10,000 view the product
+* 4,000 add it to their cart
+* 2,500 start checkout
+* 2,000 complete payment
+
+The funnel helps identify where users are dropping off.
+
+If a large percentage of users leave between **Checkout** and **Payment**, that could indicate a problem with the payment experience, pricing, form design, or another part of the process.
+
+Funnel analysis helps teams identify these potential bottlenecks.
+
+## What is Retention Analysis?
+
+Getting users to try a product is important.
+
+Getting them to **come back and continue using it** is often even more important.
+
+**Retention analysis** measures how many users continue returning to a product over time.
+
+For example:
+
+> 1,000 users signed up in January.
+
+After 30 days:
+
+> 420 are still actively using the product.
+
+The team can then investigate what distinguishes retained users from users who stopped using the product.
+
+Retention analysis can help product teams understand whether users are continuing to find value in the product.
+
+## What is Cohort Analysis?
+
+A **cohort** is a group of users who share a particular characteristic.
+
+For example:
+
+* Users who signed up in January
+* Users who signed up in February
+* Users who use a particular feature
+* Users on a particular subscription plan
+* Users acquired through a particular channel
+
+Instead of looking at all users together, cohort analysis allows teams to compare groups over time.
+
+For example:
+
+| Cohort         | Month 1 Retention | Month 3 Retention |
+| -------------- | ----------------: | ----------------: |
+| January Users  |               62% |               38% |
+| February Users |               68% |               44% |
+| March Users    |               74% |               51% |
+
+This could suggest that something introduced in March may have improved the user experience.
+
+Further investigation would be needed to determine what caused the change.
+
+## What is Feature Adoption?
+
+**Feature adoption** measures how many users actually use a particular feature.
+
+Imagine a company launches a new reporting feature.
+
+After one month:
+
+> 20,000 users have access to the feature.
+
+But only:
+
+> 2,000 users have used it.
+
+The feature has an adoption rate of approximately **10%**.
+
+That result doesn't automatically mean the feature is unsuccessful.
+
+The product team might investigate:
+
+* Do users know the feature exists?
+* Is it difficult to find?
+* Is the feature confusing?
+* Does it solve an important problem?
+* Is it available to the right users?
+* Are users choosing another workflow instead?
+
+Analytics provides the evidence needed to investigate these questions.
+
+## Product Analytics vs Web Analytics
+
+These two are related but focus on different parts of the user journey.
+
+**Web analytics** often focuses on things such as:
+
+* Website traffic
+* Page views
+* Traffic sources
+* Sessions
+* Marketing attribution
+
+**Product analytics** focuses more on what users do **inside the product**:
+
+* Feature usage
+* User flows
+* Onboarding
+* Funnels
+* Retention
+* In-product behavior
+
+A simple distinction is:
+
+> **Web analytics asks: How did users arrive?**
+
+> **Product analytics asks: What did users do after they arrived?**
+
+## Product Analytics vs Business Intelligence
+
+**Business Intelligence (BI)** typically focuses on broader business performance.
+
+For example:
+
+* Revenue
+* Sales
+* Costs
+* Profit
+* Operations
+* Business KPIs
+
+Product analytics focuses more specifically on **user behavior within the product**.
+
+The two can work together.
+
+For example:
+
+**Product Analytics**
+
+> Users who complete onboarding are more likely to remain active.
+
+↓
+
+**Business Intelligence**
+
+> Customers who remain active generate higher recurring revenue.
+
+Together, these insights can help a business understand how **user behavior connects to business outcomes**.
+
+## How Product Analytics Supports Product Decisions
+
+Product analytics becomes valuable when it influences what a team does next.
+
+A simplified workflow is:
+
+**User Behavior**
+
+↓
+
+**Data Collection**
+
+↓
+
+**Analysis**
+
+↓
+
+**Insight**
+
+↓
+
+**Product Decision**
+
+↓
+
+**Change**
+
+↓
+
+**Measure Again**
+
+For example:
+
+> Analytics shows that many users abandon onboarding at step three.
+
+↓
+
+> The team investigates the problem.
+
+↓
+
+> The onboarding flow is simplified.
+
+↓
+
+> The team measures completion rates again.
+
+↓
+
+> Completion improves.
+
+This creates a continuous feedback loop between **product development and user behavior**.
+
+## Product Analytics and A/B Testing
+
+Product analytics can also be used alongside **A/B testing**.
+
+Suppose a product team wants to improve onboarding.
+
+They create two versions:
+
+**Version A:** Existing onboarding
+
+**Version B:** Simplified onboarding
+
+Users are divided between the two versions, and the team compares relevant outcomes such as completion rate or activation.
+
+If Version B performs better, the team has evidence that the change may be worth adopting.
+
+Analytics provides the measurements needed to evaluate these experiments.
+
+## What Makes Product Analytics Useful?
+
+Collecting more data doesn't automatically create better decisions.
+
+Good product analytics starts with meaningful questions.
+
+Instead of tracking every possible click, teams should focus on events that help answer important product and business questions.
+
+For example:
+
+> "Which behaviors are associated with successful activation?"
+
+is more useful than:
+
+> "How many buttons did users click?"
+
+The objective is to connect **data to decisions**, rather than simply creating more dashboards.
+
+## The Role of Product Analysts
+
+A **Product Analyst** sits at the intersection of data, product, and business.
+
+They may work with:
+
+* Product managers
+* Engineers
+* Designers
+* Data teams
+* Business stakeholders
+
+A product analyst can help answer questions such as:
+
+> Why are users dropping off?
+
+> Which feature should we prioritize?
+
+> Is the new feature being adopted?
+
+> What behaviors are associated with retention?
+
+> Did the product change improve the desired outcome?
+
+The role isn't simply about creating reports.
+
+It is about using data to help teams make **better product decisions**.
+
+## Final Takeaway
+
+Product analytics helps organizations understand how users actually interact with their products.
+
+By analyzing events, funnels, feature adoption, cohorts, retention, and user journeys, teams can identify friction, measure outcomes, validate ideas, and make more informed product decisions.
+
+The simplest way to think about it is:
+
+> **Product analytics answers: What are users doing, what is happening because of it, and what should we do next?**
+
+The real value isn't the dashboard or the numbers.
+
+**The value comes when the data changes what a product team decides to build, improve, or measure next.**

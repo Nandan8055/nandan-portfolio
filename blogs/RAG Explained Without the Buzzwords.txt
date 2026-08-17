@@ -1,0 +1,351 @@
+# RAG Explained Without the Buzzwords
+
+Large Language Models (LLMs) can answer questions, summarize information, write content, and perform many other tasks. But there is one important limitation:
+
+**An LLM does not automatically have access to every piece of information you want it to use.**
+
+What if you want an AI assistant to answer questions about your company's internal documents, product manuals, customer policies, or a private knowledge base?
+
+This is where **RAG** comes in.
+
+## What is RAG?
+
+**RAG stands for Retrieval-Augmented Generation.**
+
+It is a technique that allows an AI application to **retrieve relevant information from external sources and provide that information to an LLM as context before generating an answer.**
+
+In simple terms:
+
+> **RAG helps an AI find the right information before it answers.**
+
+Instead of expecting the model to know everything, we give it access to the information it needs.
+
+## Why Do We Need RAG?
+
+Imagine a company has thousands of documents containing:
+
+* Product documentation
+* Internal policies
+* Customer support guides
+* Pricing information
+* Technical documentation
+* Company procedures
+
+Now an employee asks:
+
+> "What is our refund policy for annual subscriptions?"
+
+A general-purpose LLM may not know the company's private refund policy.
+
+We could try to put every document into the prompt, but that would be inefficient and impractical.
+
+Instead, a RAG system can search the company's knowledge base, find the relevant section about annual subscription refunds, and provide that information to the LLM.
+
+The model can then generate an answer based on the retrieved information.
+
+## How Does RAG Work?
+
+A basic RAG system follows a simple process:
+
+**User Question**
+
+↓
+
+**Search for Relevant Information**
+
+↓
+
+**Retrieve Relevant Content**
+
+↓
+
+**Give Content to the LLM**
+
+↓
+
+**Generate Answer**
+
+For example:
+
+> **Question:** "How long do customers have to request a refund?"
+
+The system searches the available documents and finds:
+
+> "Customers may request a refund within 30 days of their annual subscription purchase."
+
+That information is provided to the LLM as context.
+
+The LLM can then respond:
+
+> "Customers can request a refund within 30 days of purchasing an annual subscription."
+
+The important part is that the answer was generated using **retrieved information**.
+
+## What Does "Retrieval-Augmented Generation" Mean?
+
+The name sounds complicated, but it can be broken down into three simple words.
+
+### Retrieval
+
+The system **retrieves** relevant information from an external source.
+
+### Augmented
+
+That information is **added to the context** provided to the AI model.
+
+### Generation
+
+The LLM uses the available context to **generate the final response**.
+
+So:
+
+**Retrieve → Add Context → Generate**
+
+That's RAG.
+
+## Where Does the Information Come From?
+
+The information used by a RAG system can come from many different sources.
+
+For example:
+
+* PDFs
+* Websites
+* Company documentation
+* Databases
+* Knowledge bases
+* Text files
+* Product manuals
+* Customer support articles
+
+The important thing is that the AI application has a way to search and retrieve relevant information from those sources.
+
+## What are Embeddings?
+
+This is where another important AI concept appears: **embeddings**.
+
+An embedding is a numerical representation of information that captures aspects of its meaning.
+
+For example, consider these two questions:
+
+> "How do I reset my password?"
+
+and:
+
+> "I forgot my password. How can I change it?"
+
+They use different words, but their meanings are very similar.
+
+An embedding model can convert these pieces of text into numerical vectors that represent their semantic meaning.
+
+This makes it possible to compare pieces of information based on meaning rather than simply matching the exact words.
+
+## What is a Vector Database?
+
+Once documents are converted into embeddings, those vectors can be stored in a **vector database**.
+
+A vector database is designed to store and search these numerical representations efficiently.
+
+A simplified process looks like:
+
+**Documents**
+
+↓
+
+**Split into smaller sections**
+
+↓
+
+**Create embeddings**
+
+↓
+
+**Store embeddings**
+
+↓
+
+**User asks a question**
+
+↓
+
+**Create an embedding for the question**
+
+↓
+
+**Search for similar vectors**
+
+↓
+
+**Retrieve relevant sections**
+
+↓
+
+**Send them to the LLM**
+
+↓
+
+**Generate the answer**
+
+This retrieval process is one of the core components of many RAG applications.
+
+## Why are Documents Split into Smaller Sections?
+
+Large documents are usually divided into smaller pieces, often called **chunks**.
+
+Imagine a 100-page employee handbook.
+
+If a user asks:
+
+> "How many vacation days do employees receive?"
+
+The system doesn't need to send the entire 100-page document to the LLM.
+
+Instead, the document can be divided into smaller sections.
+
+The retrieval system can then find the specific section discussing vacation days and provide that relevant content to the model.
+
+Good **chunking** is important because chunks that are too large may contain unnecessary information, while chunks that are too small may lose important context.
+
+## RAG vs Traditional Search
+
+Traditional keyword search might look for exact words.
+
+For example, searching for:
+
+> "refund policy"
+
+might prioritize documents containing those exact words.
+
+RAG systems can use **semantic search**, which focuses more on meaning.
+
+A user could ask:
+
+> "Can I get my money back if I cancel my subscription?"
+
+Even if the document uses the phrase "subscription refund policy," semantic search can still identify it as relevant.
+
+This makes RAG particularly useful for natural-language questions.
+
+## RAG vs Fine-Tuning
+
+RAG and fine-tuning are often confused, but they solve different problems.
+
+### RAG
+
+RAG gives the model **external information at the time of the request**.
+
+For example:
+
+> "Here is our latest company policy. Use it to answer the question."
+
+### Fine-Tuning
+
+Fine-tuning involves **training an existing model further on a specific dataset** to adapt its behavior or capabilities.
+
+A simple way to remember the difference is:
+
+> **RAG gives the AI information. Fine-tuning changes how the AI behaves.**
+
+If the information changes frequently, such as company policies or product documentation, RAG can be particularly useful because the external knowledge source can be updated without retraining the model.
+
+## Can RAG Prevent AI Hallucinations?
+
+RAG can **reduce the risk of unsupported answers**, but it does not guarantee that an AI system will always be correct.
+
+The quality of the final response depends on several factors:
+
+* Quality of the source documents
+* Quality of document chunking
+* Retrieval accuracy
+* Search strategy
+* Amount of relevant context
+* LLM behavior
+* Prompt design
+
+If the retrieval system finds the wrong information, the LLM may still produce an incorrect answer.
+
+This is why RAG systems need evaluation, testing, and monitoring.
+
+## Where is RAG Used?
+
+RAG can be useful anywhere an AI application needs to work with external or specialized information.
+
+Common examples include:
+
+### Customer Support
+
+An AI assistant can retrieve relevant product documentation before answering customer questions.
+
+### Company Knowledge Bases
+
+Employees can ask questions about internal policies, processes, and documentation.
+
+### Documentation Assistants
+
+Developers can ask questions about technical documentation and retrieve relevant sections.
+
+### Research
+
+An AI system can retrieve relevant documents and use them as context for analysis.
+
+### E-commerce
+
+AI assistants can retrieve product information, specifications, and availability.
+
+## A Simple RAG Architecture
+
+A basic RAG application can be visualized as:
+
+```text
+                DOCUMENTS
+                    ↓
+              Split into chunks
+                    ↓
+                Embeddings
+                    ↓
+             Vector Database
+                    ↓
+USER QUESTION → Semantic Search
+                    ↓
+             Relevant Chunks
+                    ↓
+             Context + Prompt
+                    ↓
+                   LLM
+                    ↓
+                 ANSWER
+```
+
+The LLM is only one part of the system.
+
+The retrieval layer provides the information that the model needs to produce a more relevant response.
+
+## The Most Important Idea
+
+RAG isn't a new type of LLM.
+
+It isn't a database.
+
+It isn't fine-tuning.
+
+It is a **system design pattern that connects an AI model to external information.**
+
+The simplest mental model is:
+
+> **LLM = generates the answer**
+> **Retrieval = finds the information**
+> **RAG = combines both**
+
+## Final Takeaway
+
+RAG allows AI applications to work with information that may not be part of an LLM's original training data.
+
+Instead of asking an AI model to answer everything from what it already knows, a RAG system can:
+
+**Find relevant information → Provide that information as context → Generate an answer**
+
+This makes RAG particularly useful for applications that need to work with **private, specialized, or frequently changing information**.
+
+The concept behind RAG is actually quite simple:
+
+> **Don't make the AI remember everything. Give it a way to find what it needs.**

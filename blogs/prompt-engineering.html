@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>What is Prompt Engineering? A Practical Guide - Nandan B M Blogs</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../styles.css" />
+  <style>
+    .post-container {
+      max-width: 780px;
+      margin: 120px auto 72px;
+      padding: 0 24px;
+    }
+    .post-image {
+      width: 100%;
+      height: auto;
+      display: block;
+      border-radius: 8px;
+      border: 1px solid var(--nav-border);
+      margin-bottom: 32px;
+    }
+    .post-content {
+      font-size: 1.1rem;
+      line-height: 1.7;
+      color: #e0e0e0;
+    }
+    .post-content h1 {
+      font-size: clamp(2rem, 4.5vw, 2.8rem);
+      font-weight: 800;
+      margin: 0 0 16px;
+      line-height: 1.15;
+      color: var(--text);
+      letter-spacing: -0.02em;
+    }
+    .post-content h2 {
+      font-size: clamp(1.4rem, 3vw, 1.8rem);
+      font-weight: 700;
+      margin: 40px 0 16px;
+      color: var(--text);
+      letter-spacing: -0.01em;
+    }
+    .post-content h3 {
+      font-size: clamp(1.15rem, 2vw, 1.35rem);
+      font-weight: 700;
+      margin: 28px 0 12px;
+      color: var(--text);
+    }
+    .post-content p {
+      margin: 0 0 24px;
+    }
+    .post-content ul, .post-content ol {
+      margin: 0 0 24px;
+      padding-left: 24px;
+    }
+    .post-content li {
+      margin-bottom: 8px;
+    }
+    .post-content blockquote {
+      border-left: 3px solid var(--red);
+      background: var(--bg-card);
+      margin: 32px 0;
+      padding: 18px 24px;
+      font-style: italic;
+      color: var(--text);
+      border-radius: 0 6px 6px 0;
+    }
+  </style>
+</head>
+<body>
+  <main class="home-screen">
+    <!-- Portable Centered Capsule Navbar -->
+    <nav class="top-nav" aria-label="Portfolio navigation">
+      <div class="top-nav-links" aria-label="Main navigation">
+        <a href="../home.html#" class="top-nav-link">Home</a>
+        <a href="../home.html#professional-title" class="top-nav-link">Journey</a>
+        <a href="../home.html#awards-title" class="top-nav-link">Awards</a>
+        <a href="../home.html#skills-title" class="top-nav-link">Skills</a>
+        <a href="../home.html#featured-title" class="top-nav-link">Projects</a>
+        <a href="https://in.linkedin.com/in/connect-with-nandan-bm" target="_blank" rel="noopener" class="top-nav-link">LinkedIn</a>
+        <a href="/blogs/index.html" class="top-nav-link active">My blogs</a>
+        <a href="../home.html#contact-title" class="top-nav-link">Let's Connect</a>
+      </div>
+    </nav>
+
+    <a class="floating-back" href="index.html" aria-label="Back to blogs listing">Back</a>
+
+    <div class="post-container">
+      <img class="post-image" src="../Blogs_Images/What is Prompt Engineering.png" alt="Prompt Engineering Banner" />
+      <article class="post-content">
+        <h1>What is Prompt Engineering? A Practical Guide</h1>
+        <p>As AI tools and Large Language Models (LLMs) become more capable, the way we communicate with them becomes increasingly important.</p>
+        <p>A simple question can produce a useful answer, while a vague or poorly structured instruction may produce something completely different from what was expected.</p>
+        <p><strong>Prompt engineering is the practice of designing and refining instructions to guide an AI model toward a desired output.</strong></p>
+
+        <h2>What is a Prompt?</h2>
+        <p>A <strong>prompt</strong> is the instruction, question, or information provided to an AI model.</p>
+        <p>For example, instead of asking: <em>"Write a product description for running shoes,"</em> a refined prompt would be: <em>"Write a 100-word product description for lightweight running shoes designed for beginners. Use a professional but friendly tone and highlight comfort and durability."</em></p>
+
+        <h2>Why Does Prompt Engineering Matter?</h2>
+        <p>LLMs are capable of performing many different tasks, but they need to understand what the user wants them to accomplish. Good prompts help make AI responses more <strong>relevant, structured, consistent, and useful</strong>.</p>
+        <p>It is generally an iterative process:</p>
+        <blockquote>
+          <strong>Write a prompt &rarr; Get a response &rarr; Evaluate the result &rarr; Improve the prompt &rarr; Try again</strong>
+        </blockquote>
+
+        <h2>The Key Elements of a Good Prompt</h2>
+        <ul>
+          <li><strong>Role/Persona:</strong> Telling the AI who it represents (e.g. <em>"Act as a professional copywriter"</em>).</li>
+          <li><strong>Task/Instruction:</strong> Clear verbs explaining what to do (e.g. <em>"Summarize", "Translate", "Refactor"</em>).</li>
+          <li><strong>Context:</strong> Background information or constraints.</li>
+          <li><strong>Input Data:</strong> The raw text or code that needs processing.</li>
+          <li><strong>Format/Output constraints:</strong> Defining the expected structure (e.g. <em>"JSON", "Bullet points", "Markdown table"</em>).</li>
+        </ul>
+
+        <h2>Final Takeaway</h2>
+        <blockquote>
+          "Prompt engineering is not about finding a magic sentence; it is about designing clear communication protocols with machines."
+        </blockquote>
+      </article>
+    </div>
+  </main>
+</body>
+</html>

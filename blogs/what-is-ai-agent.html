@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>What is an AI Agent? - Nandan B M Blogs</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../styles.css" />
+  <style>
+    .post-container {
+      max-width: 780px;
+      margin: 120px auto 72px;
+      padding: 0 24px;
+    }
+    .post-image {
+      width: 100%;
+      height: auto;
+      display: block;
+      border-radius: 8px;
+      border: 1px solid var(--nav-border);
+      margin-bottom: 32px;
+    }
+    .post-content {
+      font-size: 1.1rem;
+      line-height: 1.7;
+      color: #e0e0e0;
+    }
+    .post-content h1 {
+      font-size: clamp(2rem, 4.5vw, 2.8rem);
+      font-weight: 800;
+      margin: 0 0 16px;
+      line-height: 1.15;
+      color: var(--text);
+      letter-spacing: -0.02em;
+    }
+    .post-content h2 {
+      font-size: clamp(1.4rem, 3vw, 1.8rem);
+      font-weight: 700;
+      margin: 40px 0 16px;
+      color: var(--text);
+      letter-spacing: -0.01em;
+    }
+    .post-content h3 {
+      font-size: clamp(1.15rem, 2vw, 1.35rem);
+      font-weight: 700;
+      margin: 28px 0 12px;
+      color: var(--text);
+    }
+    .post-content p {
+      margin: 0 0 24px;
+    }
+    .post-content ul, .post-content ol {
+      margin: 0 0 24px;
+      padding-left: 24px;
+    }
+    .post-content li {
+      margin-bottom: 8px;
+    }
+    .post-content blockquote {
+      border-left: 3px solid var(--red);
+      background: var(--bg-card);
+      margin: 32px 0;
+      padding: 18px 24px;
+      font-style: italic;
+      color: var(--text);
+      border-radius: 0 6px 6px 0;
+    }
+  </style>
+</head>
+<body>
+  <main class="home-screen">
+    <!-- Portable Centered Capsule Navbar -->
+    <nav class="top-nav" aria-label="Portfolio navigation">
+      <div class="top-nav-links" aria-label="Main navigation">
+        <a href="../home.html#" class="top-nav-link">Home</a>
+        <a href="../home.html#professional-title" class="top-nav-link">Journey</a>
+        <a href="../home.html#awards-title" class="top-nav-link">Awards</a>
+        <a href="../home.html#skills-title" class="top-nav-link">Skills</a>
+        <a href="../home.html#featured-title" class="top-nav-link">Projects</a>
+        <a href="https://in.linkedin.com/in/connect-with-nandan-bm" target="_blank" rel="noopener" class="top-nav-link">LinkedIn</a>
+        <a href="/blogs/index.html" class="top-nav-link active">My blogs</a>
+        <a href="../home.html#contact-title" class="top-nav-link">Let's Connect</a>
+      </div>
+    </nav>
+
+    <a class="floating-back" href="index.html" aria-label="Back to blogs listing">Back</a>
+
+    <div class="post-container">
+      <img class="post-image" src="../Blogs_Images/What is an AI Agent.png" alt="AI Agent Banner" />
+      <article class="post-content">
+        <h1>What is an AI Agent?</h1>
+        <p>An AI agent is a software system that uses AI to understand a goal, decide what actions are needed, use available tools, and work toward completing that goal.</p>
+        <p>While a traditional chatbot operates in a simple <em>User &rarr; Question &rarr; AI &rarr; Answer</em> loop, an AI agent acts dynamically:</p>
+        <blockquote>
+          <strong>Goal &rarr; Understand &rarr; Plan &rarr; Use Tools &rarr; Observe Results &rarr; Take Next Action &rarr; Complete Goal</strong>
+        </blockquote>
+
+        <h2>What Makes an AI Agent Different?</h2>
+        <p>The key differentiator is <strong>action</strong>. An agent combines a language model with:</p>
+        <ul>
+          <li><strong>Tools:</strong> web searches, code executors, calculators.</li>
+          <li><strong>APIs & Databases:</strong> reading user profiles, triggering notifications.</li>
+          <li><strong>Memory:</strong> recalling previous steps and user preferences.</li>
+          <li><strong>Decision-making logic:</strong> autonomous planning.</li>
+        </ul>
+
+        <h2>Tool Calling: The Core Capability</h2>
+        <p>Tool calling allows the AI model to request that an external application execute a specific function. For example, if asked for the weather, the model outputs a command to run a weather API query, receives the temperature payload, and explains it back to the user.</p>
+
+        <h2>Memory & Autonomy</h2>
+        <p>Agents utilize memory systems (both short-term and persistent) to retain information across conversation loops. Depending on safety guards, agents can act fully autonomously or require human-in-the-loop approvals before executing sensitive tasks like sending emails or updating records.</p>
+
+        <h2>Final Takeaway</h2>
+        <blockquote>
+          "An LLM can generate an answer. An AI agent can use an LLM to take action toward a goal."
+        </blockquote>
+      </article>
+    </div>
+  </main>
+</body>
+</html>

@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Correlation vs. Causation: What Does Data Really Tell Us? - Nandan B M Blogs</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../styles.css" />
+  <style>
+    .post-container {
+      max-width: 780px;
+      margin: 120px auto 72px;
+      padding: 0 24px;
+    }
+    .post-image {
+      width: 100%;
+      height: auto;
+      display: block;
+      border-radius: 8px;
+      border: 1px solid var(--nav-border);
+      margin-bottom: 32px;
+    }
+    .post-content {
+      font-size: 1.1rem;
+      line-height: 1.7;
+      color: #e0e0e0;
+    }
+    .post-content h1 {
+      font-size: clamp(2rem, 4.5vw, 2.8rem);
+      font-weight: 800;
+      margin: 0 0 16px;
+      line-height: 1.15;
+      color: var(--text);
+      letter-spacing: -0.02em;
+    }
+    .post-content h2 {
+      font-size: clamp(1.4rem, 3vw, 1.8rem);
+      font-weight: 700;
+      margin: 40px 0 16px;
+      color: var(--text);
+      letter-spacing: -0.01em;
+    }
+    .post-content h3 {
+      font-size: clamp(1.15rem, 2vw, 1.35rem);
+      font-weight: 700;
+      margin: 28px 0 12px;
+      color: var(--text);
+    }
+    .post-content p {
+      margin: 0 0 24px;
+    }
+    .post-content ul, .post-content ol {
+      margin: 0 0 24px;
+      padding-left: 24px;
+    }
+    .post-content li {
+      margin-bottom: 8px;
+    }
+    .post-content blockquote {
+      border-left: 3px solid var(--red);
+      background: var(--bg-card);
+      margin: 32px 0;
+      padding: 18px 24px;
+      font-style: italic;
+      color: var(--text);
+      border-radius: 0 6px 6px 0;
+    }
+  </style>
+</head>
+<body>
+  <main class="home-screen">
+    <!-- Portable Centered Capsule Navbar -->
+    <nav class="top-nav" aria-label="Portfolio navigation">
+      <div class="top-nav-links" aria-label="Main navigation">
+        <a href="../home.html#" class="top-nav-link">Home</a>
+        <a href="../home.html#professional-title" class="top-nav-link">Journey</a>
+        <a href="../home.html#awards-title" class="top-nav-link">Awards</a>
+        <a href="../home.html#skills-title" class="top-nav-link">Skills</a>
+        <a href="../home.html#featured-title" class="top-nav-link">Projects</a>
+        <a href="https://in.linkedin.com/in/connect-with-nandan-bm" target="_blank" rel="noopener" class="top-nav-link">LinkedIn</a>
+        <a href="/blogs/index.html" class="top-nav-link active">My blogs</a>
+        <a href="../home.html#contact-title" class="top-nav-link">Let's Connect</a>
+      </div>
+    </nav>
+
+    <a class="floating-back" href="index.html" aria-label="Back to blogs listing">Back</a>
+
+    <div class="post-container">
+      <img class="post-image" src="../Blogs_Images/Correlation vs. Causation.png" alt="Correlation vs. Causation Banner" />
+      <article class="post-content">
+        <h1>Correlation vs. Causation: What Does Data Really Tell Us?</h1>
+        <p>Data can reveal patterns that help businesses understand customers, products, and markets. But seeing two things happen together doesn't necessarily mean that one caused the other.</p>
+        <p>This is the difference between <strong>correlation and causation</strong>. Understanding the difference is essential when analyzing data and making business decisions.</p>
+
+        <h2>What is Correlation?</h2>
+        <p><strong>Correlation</strong> describes a relationship between two variables where changes in one variable are associated with changes in another.</p>
+        <p>For example, imagine a company discovers that:</p>
+        <blockquote>
+          Customers who use a particular feature are more likely to renew their subscription.
+        </blockquote>
+        <p>There is a relationship between feature usage and subscription renewal. However, this doesn't automatically mean that using the feature causes customers to renew. There could be another factor influencing both behaviors.</p>
+
+        <h2>What is Causation?</h2>
+        <p><strong>Causation</strong> means that a change in one variable directly contributes to a change in another.</p>
+        <p>For example:</p>
+        <blockquote>
+          A company simplifies its checkout process, and the percentage of completed purchases increases as a result.
+        </blockquote>
+        <p>If a well-designed experiment shows that the simplified checkout caused the improvement, we have stronger evidence of a causal relationship.</p>
+        <blockquote>
+          "Correlation tells us that two things are related. Causation tells us that one thing contributes to causing another."
+        </blockquote>
+
+        <h2>A Simple Example</h2>
+        <p>Imagine a business notices this pattern: <em>Ice cream sales increase when sunglasses sales increase.</em> Does buying sunglasses cause people to buy ice cream? Probably not.</p>
+        <p>There is likely another factor involved: <strong>Hot weather</strong>. It causes more people to buy sunglasses, and at the same time, more people to buy ice cream. The two products are correlated, but one isn't causing the other. This third factor is called a <strong>confounding variable</strong>.</p>
+
+        <h2>Why Correlation Can Be Misleading</h2>
+        <p>Businesses work with large amounts of data, which makes it easy to discover relationships. For example:</p>
+        <blockquote>
+          Users who watch more product tutorials have higher retention.
+        </blockquote>
+        <p>A company might conclude that watching tutorials causes users to stay longer. But perhaps users who are already highly engaged are simply more likely to watch tutorials. The tutorial itself may not be the primary reason for the higher retention.</p>
+        <p>If A changes when B changes, it doesn't automatically mean A causes B. There are several possibilities:</p>
+        <ul>
+          <li>A causes B</li>
+          <li>B causes A</li>
+          <li>A and B influence each other</li>
+          <li>A third factor (C) influences both</li>
+          <li>The relationship is simply coincidental</li>
+        </ul>
+
+        <h2>How Can Businesses Investigate Causation?</h2>
+        <p>When a business wants to determine whether one action actually causes an outcome, it needs stronger evidence than simple observation. One of the most useful approaches is <strong>experimentation</strong> via <strong>A/B Testing</strong>.</p>
+        <p>An A/B test compares two versions (Version A: existing, Version B: new) to determine whether a specific change affects an outcome. Users are randomly assigned to one of the two versions, and the results are compared.</p>
+        <p>Randomization helps reduce the influence of other factors, making it easier to attribute differences in outcomes to the change being tested rather than pre-existing differences between groups.</p>
+
+        <h2>Final Takeaway</h2>
+        <blockquote>
+          "When two things happen together, don't immediately assume that one caused the other."
+        </blockquote>
+        <p>Instead, treat the relationship as a starting point. Ask questions, investigate other explanations, analyze the data carefully, and use experiments where appropriate.</p>
+      </article>
+    </div>
+  </main>
+</body>
+</html>

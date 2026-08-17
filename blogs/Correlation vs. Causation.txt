@@ -1,0 +1,374 @@
+# Correlation vs. Causation: What Does Data Really Tell Us?
+
+Data can reveal patterns that help businesses understand customers, products, and markets.
+
+But seeing two things happen together doesn't necessarily mean that one caused the other.
+
+This is the difference between **correlation and causation**.
+
+Understanding the difference is essential when analyzing data and making business decisions.
+
+## What is Correlation?
+
+**Correlation** describes a relationship between two variables where changes in one variable are associated with changes in another.
+
+For example, imagine a company discovers that:
+
+> Customers who use a particular feature are more likely to renew their subscription.
+
+There is a relationship between **feature usage** and **subscription renewal**.
+
+However, this doesn't automatically mean that using the feature causes customers to renew.
+
+There could be another factor influencing both behaviors.
+
+## What is Causation?
+
+**Causation** means that a change in one variable directly contributes to a change in another.
+
+For example:
+
+> A company simplifies its checkout process, and the percentage of completed purchases increases as a result.
+
+If a well-designed experiment shows that the simplified checkout caused the improvement, we have stronger evidence of a causal relationship.
+
+A simple way to remember the difference is:
+
+> **Correlation tells us that two things are related.**
+
+> **Causation tells us that one thing contributes to causing another.**
+
+## A Simple Example
+
+Imagine a business notices this pattern:
+
+> Ice cream sales increase when sunglasses sales increase.
+
+Does buying sunglasses cause people to buy ice cream?
+
+Probably not.
+
+There is likely another factor involved:
+
+**Hot weather**
+
+↓
+
+**More people buy sunglasses**
+
+and at the same time:
+
+**Hot weather**
+
+↓
+
+**More people buy ice cream**
+
+The two products are correlated, but one isn't necessarily causing the other.
+
+This third factor is sometimes called a **confounding variable**.
+
+## What is a Confounding Variable?
+
+A **confounding variable** is a factor that influences both variables being studied and can make a relationship appear stronger or different than it really is.
+
+Consider:
+
+> People who exercise more tend to report better health.
+
+That relationship may be real, but many other factors could influence both exercise and health, such as age, diet, income, sleep, or existing health conditions.
+
+Simply observing the relationship doesn't tell us exactly what caused it.
+
+## Why Correlation Can Be Misleading
+
+Businesses work with large amounts of data, which makes it easy to discover relationships.
+
+For example:
+
+> Users who watch more product tutorials have higher retention.
+
+A company might conclude:
+
+> "Watching tutorials causes users to stay longer."
+
+But there could be another explanation.
+
+Perhaps users who are already highly engaged are more likely to watch tutorials **and** more likely to remain customers.
+
+In this case:
+
+**High engagement → More tutorial usage**
+
+and
+
+**High engagement → Higher retention**
+
+The tutorial itself may not be the primary reason for the higher retention.
+
+This is why correlation should be treated as **evidence of a relationship**, not automatic proof of cause.
+
+## Correlation Does Not Equal Causation
+
+This is one of the most important principles in data analysis.
+
+If:
+
+**A changes when B changes**
+
+it doesn't necessarily mean:
+
+**A causes B**
+
+There are several possibilities:
+
+### A causes B
+
+**A → B**
+
+### B causes A
+
+**B → A**
+
+### A and B influence each other
+
+**A ↔ B**
+
+### A third factor influences both
+
+**C → A**
+
+**C → B**
+
+### The relationship may simply be coincidental
+
+Sometimes two variables appear related purely by chance.
+
+This is why understanding the underlying context is important.
+
+## How Can Businesses Investigate Causation?
+
+When a business wants to determine whether one action actually causes an outcome, it needs stronger evidence than simple observation.
+
+One of the most useful approaches is **experimentation**.
+
+## A/B Testing
+
+An **A/B test** compares two versions of something to determine whether a specific change affects an outcome.
+
+For example, an e-commerce company wants to know whether changing its checkout button increases purchases.
+
+### Version A
+
+Existing checkout button.
+
+### Version B
+
+New checkout button.
+
+Users are randomly assigned to one of the two versions.
+
+The company then compares the results.
+
+For example:
+
+**Version A:** 5.2% conversion
+
+**Version B:** 6.1% conversion
+
+If the experiment is properly designed and the difference is statistically meaningful, the business has stronger evidence that the change contributed to the improvement.
+
+A/B testing is widely used in product development, marketing, and digital experiences.
+
+## Why Randomization Matters
+
+Randomization helps reduce the influence of other factors.
+
+Imagine two groups of users:
+
+**Group A:** Receives the old experience.
+
+**Group B:** Receives the new experience.
+
+If users are randomly assigned, the groups are more likely to be comparable.
+
+This makes it easier to attribute differences in outcomes to the change being tested rather than to pre-existing differences between the groups.
+
+## Statistical Significance
+
+A difference between two groups doesn't automatically mean the change caused a real improvement.
+
+Sometimes differences occur simply because of random variation.
+
+**Statistical significance** is one method used to evaluate whether an observed difference is unlikely to have occurred purely by chance under a specified statistical model.
+
+For example, a company might observe:
+
+> Version A: 10.1% conversion
+
+> Version B: 10.4% conversion
+
+The difference is small.
+
+Before concluding that Version B is better, analysts may need to consider the sample size, variability, experimental design, and statistical evidence.
+
+A larger difference isn't always meaningful, and a statistically significant difference isn't necessarily important from a business perspective.
+
+## Correlation in Product Analytics
+
+Correlation can still be extremely useful.
+
+Suppose product analytics shows:
+
+> Users who complete onboarding are more likely to remain active after 30 days.
+
+This is valuable information.
+
+The product team can investigate:
+
+* Why do these users behave differently?
+* Does onboarding help users understand the product?
+* Are highly motivated users simply more likely to complete onboarding?
+* Which onboarding steps matter most?
+
+The correlation can therefore help identify an area worth investigating.
+
+The mistake would be immediately concluding:
+
+> "Completing onboarding causes retention."
+
+Instead, the correct approach is:
+
+> **The data shows a relationship. Let's investigate whether there is a causal explanation.**
+
+## Correlation in Market Research
+
+The same principle applies to surveys.
+
+Imagine survey results show:
+
+> Customers who report higher satisfaction are more likely to recommend a product.
+
+This suggests a relationship between **satisfaction** and **recommendation intent**.
+
+However, survey data alone may not establish that increasing satisfaction will automatically cause a specific increase in recommendations.
+
+Other factors may influence both.
+
+Survey data can identify patterns and relationships, but researchers need to consider study design and other evidence when making causal claims.
+
+## Why This Matters for Business Decisions
+
+Confusing correlation with causation can lead to expensive decisions.
+
+Imagine a company discovers:
+
+> Customers who receive more emails spend more money.
+
+The company might decide:
+
+> "Send everyone more emails."
+
+But perhaps the customers who receive more emails are already high-value customers who have opted into additional communications.
+
+Sending more emails to everyone might not increase revenue and could even negatively affect customer experience.
+
+A better approach would be to investigate the relationship and, where appropriate, run a controlled experiment.
+
+## From Correlation to Better Questions
+
+Correlation is not something businesses should avoid.
+
+It is often the **starting point for useful questions**.
+
+For example:
+
+> "Users who use Feature A have higher retention."
+
+can lead to:
+
+> "Why do these users have higher retention?"
+
+Then:
+
+> "Does Feature A contribute to retention?"
+
+And finally:
+
+> "Can we test whether encouraging Feature A usage changes retention?"
+
+This turns a simple observation into a structured analytical process.
+
+## A Practical Data Analysis Approach
+
+When you discover a relationship between two variables, ask:
+
+**1. Are the variables actually related?**
+
+Check the data carefully.
+
+**2. Could another factor explain the relationship?**
+
+Look for possible confounding variables.
+
+**3. Which direction could the relationship work?**
+
+Could B influence A instead of A influencing B?
+
+**4. Is there enough data?**
+
+Small samples can produce unstable results.
+
+**5. Could the relationship be coincidental?**
+
+Consider statistical evidence.
+
+**6. Can we run an experiment?**
+
+If appropriate, use an A/B test or another controlled research design.
+
+**7. Does the result matter to the business?**
+
+Statistical evidence should still be interpreted in the context of business impact.
+
+## The Bigger Picture
+
+Good data analysis isn't simply about finding relationships.
+
+It's about understanding **what those relationships mean**.
+
+A dashboard might reveal a pattern.
+
+A statistical analysis might confirm that the pattern is meaningful.
+
+An experiment might provide stronger evidence about causality.
+
+Together, these approaches help businesses move from:
+
+**Observation → Investigation → Evidence → Decision**
+
+This is especially important when data is being used to influence product strategy, marketing investments, customer experience, or other major business decisions.
+
+## Final Takeaway
+
+Correlation and causation are closely related but fundamentally different concepts.
+
+**Correlation tells us that two variables are associated.**
+
+**Causation tells us that one factor contributes to producing a change in another.**
+
+The key lesson is simple:
+
+> **When two things happen together, don't immediately assume that one caused the other.**
+
+Instead, treat the relationship as a starting point.
+
+Ask questions, investigate other explanations, analyze the data carefully, and use experiments where appropriate.
+
+The strongest data-driven decisions don't just ask:
+
+> **"What is happening?"**
+
+They also ask:
+
+> **"Why is it happening, and how can we know?"**

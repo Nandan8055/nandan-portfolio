@@ -1,0 +1,298 @@
+# What is Prompt Engineering? A Practical Guide
+
+As AI tools and Large Language Models (LLMs) become more capable, the way we communicate with them becomes increasingly important.
+
+A simple question can produce a useful answer, while a vague or poorly structured instruction may produce something completely different from what was expected.
+
+**Prompt engineering is the practice of designing and refining instructions to guide an AI model toward a desired output.**
+
+## What is a Prompt?
+
+A **prompt** is the instruction, question, or information provided to an AI model.
+
+For example:
+
+> "Write a product description for a pair of running shoes."
+
+That's a prompt.
+
+We can make it more specific:
+
+> "Write a 100-word product description for lightweight running shoes designed for beginners. Use a professional but friendly tone and highlight comfort, durability, and everyday use."
+
+The second prompt provides the AI with more information about the **task, audience, length, tone, and desired output**.
+
+This additional context helps guide the model toward a more useful response.
+
+## What is Prompt Engineering?
+
+**Prompt engineering** is the process of creating, testing, and refining prompts to improve the quality and consistency of AI-generated results.
+
+It isn't about finding one magical sentence that works for every situation.
+
+Instead, it is usually an iterative process:
+
+**Write a prompt → Get a response → Evaluate the result → Improve the prompt → Try again**
+
+This process can be used with text generation, summarization, data extraction, coding, image generation, and many other AI applications.
+
+## Why Does Prompt Engineering Matter?
+
+LLMs are capable of performing many different tasks, but they still need to understand what the user wants them to accomplish.
+
+Compare these two prompts:
+
+**Simple:**
+
+> Analyze this data.
+
+**More specific:**
+
+> Analyze this sales dataset. Identify the three highest-performing products, compare monthly revenue, highlight unusual changes, and present the findings as five concise bullet points.
+
+The second prompt gives the model a much clearer objective and expected output.
+
+Good prompts can help make AI responses more **relevant, structured, consistent, and useful**.
+
+## The Key Elements of a Good Prompt
+
+There is no single formula that works for every AI model or task, but several elements can make prompts more effective.
+
+### 1. Task
+
+Clearly explain what you want the AI to do.
+
+> "Summarize this report."
+
+### 2. Context
+
+Provide information that helps the model understand the situation.
+
+> "The report is about customer satisfaction for a SaaS product."
+
+### 3. Audience
+
+Explain who the output is intended for.
+
+> "The summary will be presented to senior management."
+
+### 4. Output Format
+
+Specify how you want the response structured.
+
+> "Return the result as five bullet points."
+
+### 5. Constraints
+
+Define important limitations.
+
+> "Keep the summary below 150 words."
+
+### 6. Examples
+
+When the desired output follows a particular pattern, examples can help demonstrate what you want.
+
+This approach is commonly called **few-shot prompting** when multiple examples are provided.
+
+## Zero-Shot, One-Shot, and Few-Shot Prompting
+
+Prompting can also be categorized based on whether examples are provided.
+
+### Zero-Shot Prompting
+
+The model receives an instruction without an example.
+
+> "Classify this customer review as positive, neutral, or negative."
+
+### One-Shot Prompting
+
+The model receives one example before performing the task.
+
+> "Great product and fast delivery → Positive"
+
+Then the model is given a new review to classify.
+
+### Few-Shot Prompting
+
+Multiple examples are provided to demonstrate the desired pattern.
+
+This can be useful when the required output format or classification style is more complicated.
+
+## Prompt Engineering for Different Tasks
+
+Prompt engineering isn't limited to asking questions.
+
+It can be used for many different AI tasks.
+
+### Content Generation
+
+> "Write a professional introduction for a technology company."
+
+### Summarization
+
+> "Summarize this report in five key points."
+
+### Data Extraction
+
+> "Extract the company name, location, and industry from the following text."
+
+### Classification
+
+> "Classify each customer comment as positive, neutral, or negative."
+
+### Coding
+
+> "Create a Python function that calculates the average value of a list."
+
+### Analysis
+
+> "Analyze these survey results and identify the three most significant trends."
+
+The structure of the prompt should depend on the task and the desired result.
+
+## Prompt Engineering is an Iterative Process
+
+One of the most important concepts is that prompting usually isn't a one-time activity.
+
+The first prompt may produce a result that is close to what you want but still needs improvement.
+
+For example:
+
+**Prompt 1:**
+
+> Write a summary of this report.
+
+The response might be too long.
+
+You could refine it:
+
+**Prompt 2:**
+
+> Summarize this report in five bullet points.
+
+If the response still isn't suitable:
+
+**Prompt 3:**
+
+> Summarize this report in five bullet points for a senior business audience. Focus only on key findings, risks, and recommended actions.
+
+The prompt becomes more precise as you learn what the model needs.
+
+This iterative approach is a core part of effective prompting.
+
+## Prompt Engineering vs System Prompts
+
+A **system prompt** defines broader instructions about how an AI application should behave.
+
+A **user prompt** generally describes the specific task the user wants completed.
+
+For example:
+
+**System instructions:**
+
+> You are a customer support assistant. Provide concise, professional answers and use the company's approved documentation when answering product questions.
+
+**User prompt:**
+
+> How do I reset my password?
+
+The system instructions establish the assistant's behavior, while the user provides the immediate task.
+
+## Does Better Prompting Guarantee Better Answers?
+
+No.
+
+A well-written prompt can improve the chances of getting a useful response, but it cannot guarantee that the answer will be correct.
+
+AI models can still produce:
+
+* Incorrect information
+* Missing information
+* Misinterpretations
+* Hallucinations
+* Inconsistent results
+
+For important applications, AI outputs should therefore be evaluated and validated rather than blindly trusted.
+
+Prompt engineering is only one part of building a reliable AI application.
+
+## Prompt Engineering in AI Applications
+
+In real-world AI systems, prompts can become part of a larger application architecture.
+
+For example:
+
+**User Input**
+
+↓
+
+**Application Logic**
+
+↓
+
+**System Instructions + User Prompt**
+
+↓
+
+**RAG / Tools / External Data**
+
+↓
+
+**LLM**
+
+↓
+
+**Response**
+
+This means prompt engineering can work alongside technologies such as **RAG, APIs, function calling, vector databases, and AI agents**.
+
+As AI applications become more complex, prompts may also be tested and evaluated systematically rather than simply written once and left unchanged.
+
+## Best Practices for Prompt Engineering
+
+Some practical principles include:
+
+**Be clear and specific.**
+Tell the model what you actually want.
+
+**Provide relevant context.**
+Give the information required to complete the task.
+
+**Define the desired output.**
+Specify the format, length, audience, or structure when it matters.
+
+**Use examples when useful.**
+Examples can demonstrate the pattern you expect.
+
+**Break complex tasks into smaller parts.**
+Large or complicated requests can sometimes be easier to handle when divided into focused steps.
+
+**Iterate and evaluate.**
+Treat the first response as feedback and refine the prompt when necessary.
+
+**Avoid unnecessary instructions.**
+More text does not automatically mean a better prompt. Current OpenAI guidance also recommends keeping prompts focused and removing instructions that do not meaningfully improve the result.
+
+## Final Takeaway
+
+Prompt engineering is essentially about **communicating effectively with AI models**.
+
+The goal isn't to find complicated phrases or secret keywords.
+
+It is about clearly defining:
+
+**What do I want?**
+
+**What context does the AI need?**
+
+**Who is the output for?**
+
+**What should the result look like?**
+
+**What constraints should it follow?**
+
+A useful mental model is:
+
+> **Good prompt = Clear task + Relevant context + Desired outcome**
+
+As AI models become more capable, prompt engineering is becoming less about writing clever commands and more about **clearly expressing goals, providing the right context, and evaluating the results**.

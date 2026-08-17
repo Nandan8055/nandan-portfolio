@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>What is Product Analytics? A Practical Guide - Nandan B M Blogs</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../styles.css" />
+  <style>
+    .post-container {
+      max-width: 780px;
+      margin: 120px auto 72px;
+      padding: 0 24px;
+    }
+    .post-image {
+      width: 100%;
+      height: auto;
+      display: block;
+      border-radius: 8px;
+      border: 1px solid var(--nav-border);
+      margin-bottom: 32px;
+    }
+    .post-content {
+      font-size: 1.1rem;
+      line-height: 1.7;
+      color: #e0e0e0;
+    }
+    .post-content h1 {
+      font-size: clamp(2rem, 4.5vw, 2.8rem);
+      font-weight: 800;
+      margin: 0 0 16px;
+      line-height: 1.15;
+      color: var(--text);
+      letter-spacing: -0.02em;
+    }
+    .post-content h2 {
+      font-size: clamp(1.4rem, 3vw, 1.8rem);
+      font-weight: 700;
+      margin: 40px 0 16px;
+      color: var(--text);
+      letter-spacing: -0.01em;
+    }
+    .post-content h3 {
+      font-size: clamp(1.15rem, 2vw, 1.35rem);
+      font-weight: 700;
+      margin: 28px 0 12px;
+      color: var(--text);
+    }
+    .post-content p {
+      margin: 0 0 24px;
+    }
+    .post-content ul, .post-content ol {
+      margin: 0 0 24px;
+      padding-left: 24px;
+    }
+    .post-content li {
+      margin-bottom: 8px;
+    }
+    .post-content blockquote {
+      border-left: 3px solid var(--red);
+      background: var(--bg-card);
+      margin: 32px 0;
+      padding: 18px 24px;
+      font-style: italic;
+      color: var(--text);
+      border-radius: 0 6px 6px 0;
+    }
+    .post-content table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 24px 0 32px;
+    }
+    .post-content th, .post-content td {
+      border: 1px solid var(--nav-border);
+      padding: 12px 16px;
+      text-align: left;
+    }
+    .post-content th {
+      background: var(--bg-card);
+      font-weight: 700;
+      color: var(--text);
+    }
+  </style>
+</head>
+<body>
+  <main class="home-screen">
+    <!-- Portable Centered Capsule Navbar -->
+    <nav class="top-nav" aria-label="Portfolio navigation">
+      <div class="top-nav-links" aria-label="Main navigation">
+        <a href="../home.html#" class="top-nav-link">Home</a>
+        <a href="../home.html#professional-title" class="top-nav-link">Journey</a>
+        <a href="../home.html#awards-title" class="top-nav-link">Awards</a>
+        <a href="../home.html#skills-title" class="top-nav-link">Skills</a>
+        <a href="../home.html#featured-title" class="top-nav-link">Projects</a>
+        <a href="https://in.linkedin.com/in/connect-with-nandan-bm" target="_blank" rel="noopener" class="top-nav-link">LinkedIn</a>
+        <a href="/blogs/index.html" class="top-nav-link active">My blogs</a>
+        <a href="../home.html#contact-title" class="top-nav-link">Let's Connect</a>
+      </div>
+    </nav>
+
+    <a class="floating-back" href="index.html" aria-label="Back to blogs listing">Back</a>
+
+    <div class="post-container">
+      <img class="post-image" src="../Blogs_Images/What is Product Analytics.png" alt="Product Analytics Banner" />
+      <article class="post-content">
+        <h1>What is Product Analytics? A Practical Guide</h1>
+        <p>Building a product is only half the job. Once people start using it, an important question appears: <strong>Are users actually getting value from the product?</strong></p>
+        <p>Product analytics is the process of collecting and analyzing data about how users interact with a digital product. It helps product teams understand user behavior, identify problems, measure feature adoption, and make better decisions.</p>
+
+        <h2>What is Event Tracking?</h2>
+        <p>Event tracking is the foundation of product analytics. An event represents an action taken by a user inside a product, such as: <em>User Signed Up, Started Onboarding, Used Feature A, or Upgraded to Premium</em>.</p>
+        <p>Each event records properties like timestamp, user ID, device type, and metadata to help map out customer journeys.</p>
+
+        <h2>Funnels, Cohorts, and Retention</h2>
+        <ul>
+          <li><strong>Funnel Analysis:</strong> Maps out sequential steps (e.g., View Product &rarr; Add to Cart &rarr; Checkout &rarr; Pay) to spot exactly where users abandon the process.</li>
+          <li><strong>Retention Analysis:</strong> Measures how many users continue returning to the product over time (e.g. 30-day active retention).</li>
+          <li><strong>Cohort Analysis:</strong> Groups users sharing a characteristic (e.g. sign-up month or specific feature users) and tracks their relative performance.</li>
+        </ul>
+
+        <h2>Product Analytics vs. Web Analytics</h2>
+        <blockquote>
+          "Web analytics asks: How did users arrive? Product analytics asks: What did users do after they arrived?"
+        </blockquote>
+        <p>While web analytics measures bounce rates and traffic acquisition channels, product analytics looks deep into user interactions, flows, and friction points inside the product dashboard itself.</p>
+
+        <h2>Final Takeaway</h2>
+        <blockquote>
+          "Product analytics answers: What are users doing, what is happening because of it, and what should we do next?"
+        </blockquote>
+      </article>
+    </div>
+  </main>
+</body>
+</html>

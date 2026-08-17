@@ -1,0 +1,336 @@
+What is an AI Agent?
+
+An AI agent is a software system that uses AI to understand a goal, decide what actions are needed, use available tools, and work toward completing that goal.
+
+A traditional chatbot might work like this:
+
+User → Question → AI → Answer
+
+An AI agent can work more like this:
+
+Goal → Understand → Plan → Use Tools → Observe Results → Take Next Action → Complete Goal
+
+The important difference is that an agent can interact with its environment rather than simply generating a response.
+
+A Simple Example
+
+Imagine asking an AI assistant:
+
+"Find my three highest-value customers from last month and prepare a summary."
+
+A simple chatbot might explain how you could do this.
+
+An AI agent could potentially:
+
+Connect to a database.
+Retrieve customer sales data.
+Calculate total revenue per customer.
+Sort the results.
+Select the top three.
+Generate a summary.
+Return the final result.
+
+The AI isn't just answering a question.
+
+It is using tools to accomplish a task.
+
+What Makes an AI Agent Different?
+
+The main difference is action.
+
+A basic AI application might receive information and generate text.
+
+An agent can combine an AI model with:
+
+Tools
+APIs
+Databases
+External information
+Memory
+Instructions
+Decision-making logic
+
+This allows the system to perform multi-step tasks.
+
+How Does an AI Agent Work?
+
+A simplified agent workflow looks like:
+
+User Goal
+
+↓
+
+AI Model
+
+↓
+
+Decide What to Do
+
+↓
+
+Use a Tool
+
+↓
+
+Receive Result
+
+↓
+
+Evaluate Result
+
+↓
+
+Take Another Action
+
+↓
+
+Final Response
+
+For example, if an agent is asked:
+
+"What's the weather in Bangalore and should I carry an umbrella?"
+
+The agent could:
+
+Step 1: Understand the request.
+
+Step 2: Call a weather API.
+
+Step 3: Retrieve the current weather information.
+
+Step 4: Interpret the result.
+
+Step 5: Provide a recommendation.
+
+The agent has connected reasoning with an external action.
+
+What are Tools?
+
+Tools allow an AI agent to interact with systems outside the language model.
+
+A tool could be:
+
+A web search
+An API
+A calculator
+A database
+A file search system
+An email service
+A calendar
+A code execution environment
+
+For example, an AI model cannot simply assume it knows the current stock price.
+
+An agent can use a tool to retrieve the latest information and then use that result in its response.
+
+What is Tool Calling?
+
+Tool calling allows an AI model to request that an application execute a specific function.
+
+For example:
+
+User:
+"What is the weather in Bangalore?"
+
+
+AI:
+Use weather tool.
+
+
+Tool:
+28°C, cloudy.
+
+
+AI:
+"The current temperature is 28°C and it is cloudy."
+
+The AI decides that it needs external information, requests the appropriate tool, receives the result, and uses that result to produce the response.
+
+This is one of the fundamental building blocks of AI agents.
+
+AI Agents and RAG
+
+AI agents and RAG (Retrieval-Augmented Generation) can work together.
+
+RAG allows an AI application to retrieve relevant information from external sources.
+
+An agent can decide when it needs that information and use a retrieval tool to obtain it.
+
+For example:
+
+"What is our company's refund policy for enterprise customers?"
+
+An agent could recognize that the answer requires internal information, search the company's knowledge base, retrieve the relevant documentation, and generate an answer based on it.
+
+In this scenario:
+
+Agent → Retrieval Tool → Company Knowledge Base → Relevant Information → LLM → Answer
+
+RAG provides the retrieval capability, while the agent can decide when and how to use it.
+
+AI Agent vs Chatbot
+
+A chatbot generally focuses on conversation.
+
+An AI agent focuses on achieving a goal.
+
+Traditional Chatbot
+
+User: "How do I reset my password?"
+
+AI: "Go to Settings and select Reset Password."
+
+AI Agent
+
+User: "Reset my password."
+
+The agent could potentially:
+
+Verify the user's identity.
+Find the appropriate account.
+Trigger the password-reset process.
+Confirm the action.
+Tell the user that the reset was initiated.
+
+The important distinction is that the agent can take actions, assuming the required tools and permissions are available.
+
+What is Agent Memory?
+
+Some AI agent systems use memory to retain useful information across interactions or during a task.
+
+Memory can help an agent remember things such as:
+
+Previous steps
+User preferences
+Earlier tool results
+Important information from the current task
+
+However, memory doesn't necessarily mean an AI remembers everything permanently.
+
+Different applications implement memory in different ways.
+
+Single-Agent vs Multi-Agent Systems
+
+A system doesn't always need just one agent.
+
+Single-Agent System
+
+One agent manages the task and uses multiple tools.
+
+          AI Agent
+         /   |   \
+      Search API Database
+Multi-Agent System
+
+Multiple specialized agents work together.
+
+             Main Agent
+            /    |     \
+       Research  Data   Writing
+        Agent    Agent   Agent
+
+For example, a research system could have one agent responsible for finding information, another for analyzing it, and another for producing the final report.
+
+Multi-agent systems can be useful for complex workflows, but they also introduce additional complexity.
+
+Are AI Agents Fully Autonomous?
+
+Not necessarily.
+
+The level of autonomy depends on how the system is designed.
+
+Some agents require human approval before performing important actions.
+
+For example:
+
+"I've prepared the email. Would you like me to send it?"
+
+The human remains in control of the final action.
+
+Other systems may allow an agent to perform certain actions automatically within predefined limits.
+
+This is particularly important when agents have access to sensitive data or systems.
+
+Where Are AI Agents Used?
+
+AI agents can be useful for many different workflows.
+
+Customer Support
+
+An agent can retrieve customer information, search documentation, and help resolve support requests.
+
+Data Analysis
+
+An agent can retrieve data, run calculations, analyze results, and create summaries.
+
+Software Development
+
+Coding agents can inspect code, make changes, run tests, and help debug applications.
+
+Business Operations
+
+Agents can interact with business systems to automate repetitive workflows.
+
+Research
+
+An agent can search multiple sources, collect information, compare results, and produce a summary.
+
+The Challenges of AI Agents
+
+AI agents can be powerful, but they also introduce new challenges.
+
+Agents can make incorrect decisions, use the wrong tool, misunderstand a task, or produce an incorrect result.
+
+Giving an AI agent access to real systems also introduces security and permission considerations.
+
+For example, an agent that can read a database is very different from an agent that can modify or delete information.
+
+This is why production agent systems need:
+
+Clear permissions
+Tool restrictions
+Monitoring
+Testing
+Error handling
+Human approval where appropriate
+Security controls
+
+The more autonomy an agent has, the more important these safeguards become.
+
+AI Agents Are More Than Just Prompts
+
+A prompt tells an AI model what to do.
+
+An agent combines the model with the ability to do things.
+
+A simplified comparison is:
+
+Prompt → Generate a response
+
+RAG → Retrieve information + Generate a response
+
+Agent → Decide + Use tools + Retrieve information + Take actions + Generate a response
+
+These technologies can also be combined.
+
+An advanced AI application might use:
+
+LLM + Prompt + RAG + Tools + APIs + Memory + Agent Logic
+
+Final Takeaway
+
+An AI agent is a system that combines an AI model with tools and decision-making logic to accomplish tasks.
+
+Instead of simply asking:
+
+"What should I say?"
+
+an agent can work toward:
+
+"What needs to be done, and what tools do I need to accomplish it?"
+
+The simplest way to think about an AI agent is:
+
+An LLM can generate an answer. An AI agent can use an LLM to take action toward a goal.
+
+As AI applications become more capable, agents are becoming an important approach for building systems that can move beyond conversation and interact with the real world.  

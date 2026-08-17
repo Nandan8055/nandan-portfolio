@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RAG Explained Without the Buzzwords - Nandan B M Blogs</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../styles.css" />
+  <style>
+    .post-container {
+      max-width: 780px;
+      margin: 120px auto 72px;
+      padding: 0 24px;
+    }
+    .post-image {
+      width: 100%;
+      height: auto;
+      display: block;
+      border-radius: 8px;
+      border: 1px solid var(--nav-border);
+      margin-bottom: 32px;
+    }
+    .post-content {
+      font-size: 1.1rem;
+      line-height: 1.7;
+      color: #e0e0e0;
+    }
+    .post-content h1 {
+      font-size: clamp(2rem, 4.5vw, 2.8rem);
+      font-weight: 800;
+      margin: 0 0 16px;
+      line-height: 1.15;
+      color: var(--text);
+      letter-spacing: -0.02em;
+    }
+    .post-content h2 {
+      font-size: clamp(1.4rem, 3vw, 1.8rem);
+      font-weight: 700;
+      margin: 40px 0 16px;
+      color: var(--text);
+      letter-spacing: -0.01em;
+    }
+    .post-content h3 {
+      font-size: clamp(1.15rem, 2vw, 1.35rem);
+      font-weight: 700;
+      margin: 28px 0 12px;
+      color: var(--text);
+    }
+    .post-content p {
+      margin: 0 0 24px;
+    }
+    .post-content ul, .post-content ol {
+      margin: 0 0 24px;
+      padding-left: 24px;
+    }
+    .post-content li {
+      margin-bottom: 8px;
+    }
+    .post-content blockquote {
+      border-left: 3px solid var(--red);
+      background: var(--bg-card);
+      margin: 32px 0;
+      padding: 18px 24px;
+      font-style: italic;
+      color: var(--text);
+      border-radius: 0 6px 6px 0;
+    }
+    .post-content pre {
+      background: #0f0f0f;
+      border: 1px solid var(--nav-border);
+      padding: 16px;
+      border-radius: 6px;
+      overflow-x: auto;
+      font-size: 0.95rem;
+      margin: 0 0 24px;
+    }
+  </style>
+</head>
+<body>
+  <main class="home-screen">
+    <!-- Portable Centered Capsule Navbar -->
+    <nav class="top-nav" aria-label="Portfolio navigation">
+      <div class="top-nav-links" aria-label="Main navigation">
+        <a href="../home.html#" class="top-nav-link">Home</a>
+        <a href="../home.html#professional-title" class="top-nav-link">Journey</a>
+        <a href="../home.html#awards-title" class="top-nav-link">Awards</a>
+        <a href="../home.html#skills-title" class="top-nav-link">Skills</a>
+        <a href="../home.html#featured-title" class="top-nav-link">Projects</a>
+        <a href="https://in.linkedin.com/in/connect-with-nandan-bm" target="_blank" rel="noopener" class="top-nav-link">LinkedIn</a>
+        <a href="/blogs/index.html" class="top-nav-link active">My blogs</a>
+        <a href="../home.html#contact-title" class="top-nav-link">Let's Connect</a>
+      </div>
+    </nav>
+
+    <a class="floating-back" href="index.html" aria-label="Back to blogs listing">Back</a>
+
+    <div class="post-container">
+      <img class="post-image" src="../Blogs_Images/RAG Explained Without the Buzzwords.png" alt="RAG Banner" />
+      <article class="post-content">
+        <h1>RAG Explained Without the Buzzwords</h1>
+        <p>Large Language Models (LLMs) can answer questions, summarize information, and write content. But there is one important limitation: <strong>An LLM does not automatically have access to every piece of information you want it to use.</strong></p>
+        <p>What if you want an AI assistant to answer questions about your company's internal documents, product manuals, or private policies? This is where <strong>RAG</strong> comes in.</p>
+
+        <h2>What is RAG?</h2>
+        <p><strong>RAG stands for Retrieval-Augmented Generation.</strong></p>
+        <p>It is a technique that allows an AI application to <strong>retrieve relevant information from external sources and provide that information to an LLM as context before generating an answer.</strong></p>
+        <blockquote>
+          "RAG helps an AI find the right information before it answers."
+        </blockquote>
+
+        <h2>How Does RAG Work?</h2>
+        <p>A basic RAG system follows a simple process:</p>
+        <blockquote>
+          <strong>User Question &rarr; Search &rarr; Retrieve Relevant Chunks &rarr; Provide Context to LLM &rarr; Generate Answer</strong>
+        </blockquote>
+        <p>For example, if a user asks: <em>"How long do customers have to request a refund?"</em> the system searches private documents, retrieves the phrase: <em>"Customers may request a refund within 30 days of purchase,"</em> feeds it to the LLM, and the LLM responds with a accurate, contextual answer.</p>
+
+        <h2>What are Embeddings and Vector Databases?</h2>
+        <p>To perform semantic searches, RAG systems convert text chunks into numerical vectors called <strong>embeddings</strong>. An embedding captures semantic meaning (for example, recognizing that "How do I reset my password?" and "I forgot my credential details" have the same meaning).</p>
+        <p>These vectors are stored in a <strong>vector database</strong>, which enables the system to run quick search queries based on conceptual similarity rather than exact keywords.</p>
+
+        <h2>RAG vs. Fine-Tuning</h2>
+        <p>RAG and fine-tuning solve different problems:</p>
+        <ul>
+          <li><strong>RAG:</strong> Gives the model external information at the time of the request (like giving the AI an open handbook).</li>
+          <li><strong>Fine-Tuning:</strong> Adapt the model's behavior and tone by training it on a specific dataset (like sending the AI to school).</li>
+        </ul>
+        <blockquote>
+          "RAG gives the AI information. Fine-tuning changes how the AI behaves."
+        </blockquote>
+
+        <h2>Final Takeaway</h2>
+        <p>RAG is a system design pattern that connects an AI model to external, frequently changing information sources (like PDFs, databases, or support articles) without needing to retrain or fine-tune the model itself.</p>
+      </article>
+    </div>
+  </main>
+</body>
+</html>
