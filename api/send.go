@@ -90,7 +90,7 @@ func Handler(w http.ResponseWriter, r *http.Request) {
 		fmt.Printf("Resend API Call Error: %v\n", err)
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(http.StatusInternalServerError)
-		w.Write([]byte(fmt.Sprintf(`{"error": "%s"}`, err.Error())))
+		fmt.Fprintf(w, `{"error": "%s"}`, err.Error())
 		return
 	}
 
