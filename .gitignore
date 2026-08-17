@@ -4,3 +4,6 @@ Thumbs.db
 
 # Editor folders
 .vscode/
+
+# Local Environment Variables
+.env
