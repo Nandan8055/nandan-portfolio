@@ -1,0 +1,115 @@
+# What is Vibe Coding? Is It Good or Bad?
+
+**Vibe coding** is a style of software development where developers use AI tools to generate, modify, and debug code using natural-language instructions.
+
+Instead of writing every line of code manually, a developer can describe what they want to build and let an AI coding assistant generate the implementation.
+
+For example, instead of manually building an entire web page, a developer might ask:
+
+> "Create a responsive portfolio website with a navigation bar, project cards, a blog section, and a dark mode."
+
+An AI coding tool can generate the initial code, which the developer can then review, test, and improve.
+
+## How Does Vibe Coding Work?
+
+A typical vibe-coding workflow looks like:
+
+**Describe the idea → AI generates code → Run the application → Review the result → Ask AI to modify it → Test again**
+
+Modern AI coding tools can work with multiple files, understand existing codebases, identify errors, and make changes across an application.
+
+This makes it possible to build prototypes and applications much faster than traditional manual coding.
+
+## Why is Vibe Coding Becoming Popular?
+
+The biggest advantage of vibe coding is **speed**.
+
+AI can help developers:
+
+* Create prototypes quickly
+* Generate repetitive code
+* Build user interfaces
+* Debug errors
+* Explain unfamiliar code
+* Work with new frameworks
+* Generate tests and documentation
+* Experiment with ideas quickly
+
+This makes AI coding tools particularly useful during the early stages of product development.
+
+## Is Vibe Coding Bad?
+
+**Vibe coding itself isn't necessarily good or bad. It depends on how it is used.**
+
+The problem begins when developers accept AI-generated code without understanding or testing it.
+
+AI-generated code can contain:
+
+* Bugs
+* Security vulnerabilities
+* Incorrect assumptions
+* Poor architecture
+* Unnecessary complexity
+* Outdated approaches
+
+A project may appear to work while still containing serious problems underneath.
+
+This is especially important for production applications involving authentication, payments, sensitive data, APIs, or security-critical functionality.
+
+## Vibe Coding vs AI-Assisted Development
+
+There is an important distinction between blindly relying on AI and using AI as a development tool.
+
+### Vibe Coding
+
+**Idea → AI → Code → Ship**
+
+The developer may have little understanding of how the generated code works.
+
+### AI-Assisted Development
+
+**Idea → AI → Code → Review → Test → Debug → Improve → Ship**
+
+Here, the developer remains responsible for understanding the system, making technical decisions, testing the implementation, and validating the generated code.
+
+The second approach allows AI to increase productivity without removing the developer from the process.
+
+## Does Vibe Coding Replace Programming?
+
+Not completely.
+
+AI can generate code, but developers still need to understand what the code is supposed to accomplish and whether the implementation is correct.
+
+Programming fundamentals such as **logic, data structures, APIs, databases, debugging, testing, and software architecture** remain important.
+
+The role of the developer is increasingly shifting from writing every line manually toward **designing, reviewing, integrating, and validating software systems**.
+
+## Should Developers Adapt to Vibe Coding?
+
+Yes.
+
+AI-assisted development is becoming an important part of modern software development, so learning how to work effectively with AI coding tools can be a valuable skill.
+
+However, the goal shouldn't be to avoid learning programming because AI can write code.
+
+A better approach is:
+
+> **Learn the fundamentals, then use AI to build faster.**
+
+Understanding programming makes it much easier to identify when AI-generated code is wrong, improve its implementation, and make better technical decisions.
+
+## Final Takeaway
+
+Vibe coding represents a new way of interacting with software development.
+
+Instead of treating AI as a replacement for programming knowledge, it can be treated as a **coding partner** that helps developers turn ideas into working software faster.
+
+The most effective approach is not:
+
+> **AI instead of coding.**
+
+It is:
+
+> **AI + coding knowledge.**
+
+As AI coding tools become more capable, the ability to understand problems, design solutions, evaluate AI-generated code, and build reliable systems will become increasingly important.

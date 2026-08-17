@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI Fundamentals: A Beginner's Guide - Nandan B M Blogs</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../styles.css" />
+  <style>
+    .post-container {
+      max-width: 780px;
+      margin: 120px auto 72px;
+      padding: 0 24px;
+    }
+    .post-image {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+      border-radius: 8px;
+      border: 1px solid var(--nav-border);
+      margin-bottom: 32px;
+    }
+    .post-content {
+      font-size: 1.1rem;
+      line-height: 1.7;
+      color: #e0e0e0;
+    }
+    .post-content h1 {
+      font-size: clamp(2rem, 4.5vw, 2.8rem);
+      font-weight: 800;
+      margin: 0 0 16px;
+      line-height: 1.15;
+      color: var(--text);
+      letter-spacing: -0.02em;
+    }
+    .post-content h2 {
+      font-size: clamp(1.4rem, 3vw, 1.8rem);
+      font-weight: 700;
+      margin: 40px 0 16px;
+      color: var(--text);
+      letter-spacing: -0.01em;
+    }
+    .post-content h3 {
+      font-size: clamp(1.15rem, 2vw, 1.35rem);
+      font-weight: 700;
+      margin: 28px 0 12px;
+      color: var(--text);
+    }
+    .post-content p {
+      margin: 0 0 24px;
+    }
+    .post-content ul, .post-content ol {
+      margin: 0 0 24px;
+      padding-left: 24px;
+    }
+    .post-content li {
+      margin-bottom: 8px;
+    }
+    .post-content blockquote {
+      border-left: 3px solid var(--red);
+      background: var(--bg-card);
+      margin: 32px 0;
+      padding: 18px 24px;
+      font-style: italic;
+      color: var(--text);
+      border-radius: 0 6px 6px 0;
+    }
+  </style>
+</head>
+<body>
+  <main class="home-screen">
+    <!-- Portable Centered Capsule Navbar -->
+    <nav class="top-nav" aria-label="Portfolio navigation">
+      <div class="top-nav-links" aria-label="Main navigation">
+        <a href="../home.html#" class="top-nav-link">Home</a>
+        <a href="../home.html#professional-title" class="top-nav-link">Journey</a>
+        <a href="../home.html#awards-title" class="top-nav-link">Awards</a>
+        <a href="../home.html#skills-title" class="top-nav-link">Skills</a>
+        <a href="../home.html#featured-title" class="top-nav-link">Projects</a>
+        <a href="https://in.linkedin.com/in/connect-with-nandan-bm" target="_blank" rel="noopener" class="top-nav-link">LinkedIn</a>
+        <a href="/blogs/index.html" class="top-nav-link active">My blogs</a>
+        <a href="../home.html#contact-title" class="top-nav-link">Let's Connect</a>
+      </div>
+    </nav>
+
+    <a class="floating-back" href="index.html" aria-label="Back to blogs listing">Back</a>
+
+    <div class="post-container">
+      <img class="post-image" src="../Blogs_Images/AI Fundamentals.png" alt="AI Fundamentals Banner" />
+      <article class="post-content">
+        <h1>AI Fundamentals: A Beginner's Guide to Artificial Intelligence</h1>
+        <p>Artificial Intelligence (AI) is transforming how we build software, analyze data, and solve business challenges. From recommendation systems to autonomous agents and large language models (LLMs), AI is rapidly becoming a core part of modern technology.</p>
+        <p>But what exactly is AI, and how do its different components work? This guide covers the foundational concepts of Artificial Intelligence.</p>
+
+        <h2>What is Artificial Intelligence?</h2>
+        <p>At its simplest, Artificial Intelligence is the field of computer science dedicated to building systems capable of performing tasks that typically require human intelligence.</p>
+        <p>These tasks include:</p>
+        <ul>
+          <li>Learning and reasoning</li>
+          <li>Problem-solving</li>
+          <li>Pattern recognition</li>
+          <li>Natural language understanding</li>
+          <li>Visual perception</li>
+        </ul>
+        <p>AI isn't a single technology; it is a broad collection of fields, approaches, and tools working together.</p>
+
+        <h2>AI vs. Machine Learning vs. Deep Learning</h2>
+        <p>People often use these terms interchangeably, but they represent nested categories of technology:</p>
+        
+        <h3>1. Artificial Intelligence (AI)</h3>
+        <p>The broad concept of creating machines that can simulate human intelligence.</p>
+
+        <h3>2. Machine Learning (ML)</h3>
+        <p>A subset of AI focused on training systems to learn from data and improve their performance over time without being explicitly programmed. Instead of writing custom logic, you feed data to an algorithm, and the algorithm builds a model to make predictions.</p>
+
+        <h3>3. Deep Learning (DL)</h3>
+        <p>A specialized subset of Machine Learning that uses multi-layered artificial neural networks (inspired by the human brain) to solve highly complex tasks, such as speech recognition, image classification, and natural language translation.</p>
+
+        <h2>What is Generative AI?</h2>
+        <p>Generative AI is a branch of AI that focuses on creating new content, including text, images, code, audio, and video.</p>
+        <p>Unlike traditional AI systems that are designed to analyze or classify existing data (like identifying spam emails), Generative AI models are trained on massive datasets to understand patterns and generate completely original outputs based on user prompts.</p>
+
+        <h2>Large Language Models (LLMs)</h2>
+        <p>Large Language Models (LLMs), such as OpenAI's GPT, Google's Gemini, and Meta's Llama, are a type of Generative AI designed to understand and generate human-like text.</p>
+        <p>These models are trained on billions of parameters and vast libraries of text, allowing them to:</p>
+        <ul>
+          <li>Answer questions and explain complex topics</li>
+          <li>Translate languages</li>
+          <li>Write and debug code</li>
+          <li>Summarize lengthy articles</li>
+          <li>Brainstorm ideas and write creative content</li>
+        </ul>
+
+        <h2>AI Agents: The Next Frontier</h2>
+        <p>While standard AI chatbots respond to direct prompts, AI Agents are designed to perform tasks autonomously.</p>
+        <p>An AI agent can:</p>
+        <ol>
+          <li><strong>Plan:</strong> Break down a complex task into sequential steps.</li>
+          <li><strong>Use Tools:</strong> Access external APIs, search databases, write code, or send emails to gather information or complete actions.</li>
+          <li><strong>Reflect:</strong> Analyze its own output and self-correct errors during execution.</li>
+        </ol>
+        <p>This makes AI agents a powerful tool for automating workflows, customer service, data processing, and software development.</p>
+
+        <h2>Final Takeaway</h2>
+        <p>Understanding the fundamentals of AI is no longer optional for tech professionals. Whether you are building AI-powered integrations, using AI to speed up your coding, or designing custom analytics dashboards, knowing the difference between AI, Machine Learning, and LLMs helps you choose the right tools for your projects.</p>
+
+        <blockquote>
+          "AI is not a replacement for human capability—it is an amplifier."
+        </blockquote>
+      </article>
+    </div>
+  </main>
+</body>
+</html>

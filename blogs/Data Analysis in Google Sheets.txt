@@ -1,0 +1,281 @@
+# Data Analysis in Google Sheets: A Practical Guide
+
+**Google Sheets** is more than a spreadsheet for storing data. With formulas, filters, pivot tables, charts, and built-in analytical functions, it can be used to clean, analyze, visualize, and communicate data without requiring specialized data analysis software.
+
+This guide covers the core concepts and techniques used for **data analysis in Google Sheets**.
+
+## What is Data Analysis?
+
+**Data analysis** is the process of examining raw data to find patterns, trends, relationships, and insights that can support better decisions.
+
+A typical data analysis workflow includes:
+
+**Collect → Clean → Transform → Analyze → Visualize → Interpret**
+
+The goal isn't simply to calculate numbers. The goal is to understand **what the data is saying**.
+
+## Preparing Data for Analysis
+
+Before performing analysis, the data should be organized consistently.
+
+A good dataset usually follows a simple structure:
+
+* Each row represents a record.
+* Each column represents a variable or attribute.
+* The first row contains column headers.
+* Each column contains a consistent type of data.
+* Blank rows and unnecessary formatting are avoided.
+
+For example, a sales dataset might contain:
+
+| Date       | Product   | Region | Quantity | Revenue |
+| ---------- | --------- | ------ | -------: | ------: |
+| 01/08/2026 | Product A | South  |       12 | ₹24,000 |
+| 02/08/2026 | Product B | North  |        8 | ₹16,000 |
+
+Keeping data structured makes filtering, formulas, pivot tables, and charts much easier.
+
+## Data Cleaning in Google Sheets
+
+**Data cleaning** is one of the most important parts of analysis.
+
+Real-world datasets often contain:
+
+* Duplicate records
+* Missing values
+* Inconsistent capitalization
+* Extra spaces
+* Incorrect data types
+* Formatting inconsistencies
+* Typographical errors
+
+Google Sheets provides functions that can help clean this data.
+
+For example:
+
+`TRIM()` can remove unnecessary spaces.
+
+`CLEAN()` can remove non-printable characters.
+
+`UNIQUE()` can identify unique values.
+
+`COUNTBLANK()` can help identify missing values.
+
+Google Sheets also provides **Remove duplicates** and **Data validation** features that can help maintain data quality.
+
+## Using Formulas for Data Analysis
+
+Formulas are one of the most powerful features of Google Sheets.
+
+Basic functions such as:
+
+`SUM()`
+
+`AVERAGE()`
+
+`COUNT()`
+
+`MIN()`
+
+`MAX()`
+
+can be used to calculate basic statistics.
+
+For example:
+
+`=SUM(E2:E100)`
+
+calculates the total revenue in a range.
+
+More advanced functions can be used to analyze specific conditions.
+
+### COUNTIF
+
+`COUNTIF()` counts values that meet a condition.
+
+For example:
+
+`=COUNTIF(C2:C100,"South")`
+
+counts the number of records belonging to the South region.
+
+### SUMIF
+
+`SUMIF()` calculates a total based on a condition.
+
+For example:
+
+`=SUMIF(C2:C100,"South",E2:E100)`
+
+calculates the revenue generated from the South region.
+
+### IF
+
+`IF()` allows data to be categorized based on conditions.
+
+For example:
+
+`=IF(E2>=10000,"High","Low")`
+
+can classify revenue into different categories.
+
+## Lookup Functions
+
+Lookup functions are useful when information needs to be retrieved from another table or dataset.
+
+**VLOOKUP**, **XLOOKUP**, and **INDEX/MATCH** are commonly used approaches.
+
+For example, a product ID can be used to retrieve its corresponding product name or price from another table.
+
+This becomes particularly useful when working with multiple datasets.
+
+## Filtering and Sorting Data
+
+**Filters** allow specific records to be displayed while temporarily hiding irrelevant information.
+
+For example, a dataset containing thousands of sales records can be filtered to show only:
+
+* A specific region
+* A particular product
+* A specific date range
+* Sales above a certain value
+
+Sorting can then be used to arrange the data from highest to lowest revenue, oldest to newest date, or alphabetically by category.
+
+These simple operations are often the first step in exploring a dataset.
+
+## Pivot Tables
+
+**Pivot tables** are one of the most useful tools for data analysis in Google Sheets.
+
+They allow large datasets to be summarized without manually writing complex formulas.
+
+For example, a sales dataset can be transformed into a summary showing:
+
+| Region | Total Revenue |
+| ------ | ------------: |
+| North  |      ₹450,000 |
+| South  |      ₹620,000 |
+| East   |      ₹380,000 |
+| West   |      ₹510,000 |
+
+The same dataset could also be analyzed by product, month, salesperson, or any other available dimension.
+
+Pivot tables are especially useful for quickly identifying **patterns and trends** in large datasets.
+
+## Data Visualization
+
+Charts help transform numbers into information that is easier to understand.
+
+Google Sheets supports several types of charts, including:
+
+* Bar charts
+* Column charts
+* Line charts
+* Pie charts
+* Area charts
+* Scatter plots
+
+The appropriate chart depends on the question being answered.
+
+For example:
+
+**Line chart →** trends over time
+
+**Bar chart →** comparing categories
+
+**Scatter plot →** examining relationships between variables
+
+**Pie chart →** showing simple proportions
+
+Good visualization should make the important insight easier to see rather than simply making the spreadsheet look more attractive.
+
+## Conditional Formatting
+
+**Conditional formatting** automatically changes the appearance of cells based on their values.
+
+For example, it can be used to:
+
+* Highlight unusually high values
+* Identify low-performing products
+* Detect duplicates
+* Show overdue dates
+* Create simple heatmaps
+
+This makes patterns easier to identify when working with large datasets.
+
+## Descriptive Statistics
+
+Google Sheets can also be used to calculate basic descriptive statistics.
+
+Common metrics include:
+
+**Mean** — the average value.
+
+**Median** — the middle value when data is ordered.
+
+**Minimum** — the smallest value.
+
+**Maximum** — the largest value.
+
+**Count** — the number of observations.
+
+These metrics provide a quick overview of a dataset before deeper analysis is performed.
+
+## Google Sheets for Dashboards
+
+Multiple analysis techniques can be combined to create a simple **data dashboard**.
+
+A dashboard might contain:
+
+* Total revenue
+* Number of transactions
+* Average order value
+* Top-performing products
+* Regional performance
+* Monthly trends
+* Interactive filters
+
+Google Sheets supports features such as **slicers, pivot tables, charts, and formulas**, making it possible to build interactive dashboards directly within a spreadsheet.
+
+## Common Data Analysis Workflow
+
+A practical Google Sheets workflow can look like this:
+
+**1. Import the data**
+
+Bring the raw dataset into Google Sheets.
+
+**2. Inspect the data**
+
+Look for missing values, duplicates, inconsistent formats, and unusual values.
+
+**3. Clean the data**
+
+Standardize values and fix data-quality issues.
+
+**4. Transform the data**
+
+Create calculated columns and categories where necessary.
+
+**5. Analyze**
+
+Use formulas, filters, pivot tables, and statistical functions.
+
+**6. Visualize**
+
+Create charts and dashboards to communicate important findings.
+
+**7. Interpret**
+
+Turn the analysis into meaningful insights and recommendations.
+
+## Final Takeaway
+
+Google Sheets can be a surprisingly capable tool for **data analysis, reporting, and dashboard creation**.
+
+While larger datasets and complex analytical workloads may require tools such as SQL, Python, Power BI, or dedicated data platforms, Google Sheets remains extremely useful for exploratory analysis, business reporting, collaboration, and quickly turning raw data into understandable insights.
+
+The most important part of data analysis isn't the spreadsheet itself.
+
+> **The real value comes from turning raw data into information that helps people make better decisions.**

@@ -1,0 +1,351 @@
+# What is an API? A Simple Guide to APIs
+
+Modern applications rarely work alone.
+
+A weather app needs weather data. A payment application needs to communicate with a payment provider. A website may need to retrieve information from a database or another service.
+
+**APIs make these interactions possible.**
+
+API stands for **Application Programming Interface**. It provides a structured way for different software applications or systems to communicate with each other.
+
+## What is an API?
+
+An **API is a set of rules that allows one application to request data or perform an action through another application or service.**
+
+For example, imagine a food delivery application.
+
+The application may need to:
+
+* Find nearby restaurants
+* Retrieve a restaurant's menu
+* Create an order
+* Process a payment
+* Track a delivery
+
+The application doesn't need to build every one of these systems itself.
+
+Instead, it can communicate with external services through APIs.
+
+A simple way to think about an API is:
+
+> **An API is a bridge between different software systems.**
+
+## A Simple Real-World Example
+
+Imagine you're sitting in a restaurant.
+
+You look at the menu and tell the waiter what you want.
+
+The waiter takes your request to the kitchen and brings the food back.
+
+In this example:
+
+**You → Customer**
+
+**Waiter → API**
+
+**Kitchen → Server / System**
+
+**Food → Response**
+
+You don't need to know what happens inside the kitchen.
+
+You simply make a request through the waiter and receive a response.
+
+An API works in a similar way.
+
+## How Does an API Work?
+
+A typical API interaction looks like:
+
+**Client → API Request → Server → API Response → Client**
+
+The **client** is the application making the request.
+
+The **server** receives the request, processes it, and sends back a response.
+
+For example, a weather application might send a request asking:
+
+> Give me the current weather for Bangalore.
+
+The weather service processes the request and might return information such as:
+
+```text
+Temperature: 28°C
+Condition: Cloudy
+Humidity: 72%
+```
+
+The application can then use that information to display the weather to the user.
+
+## What is an API Request?
+
+An **API request** is a message sent by a client asking an API to perform an operation or return information.
+
+A request can contain several components, including:
+
+* Endpoint
+* HTTP method
+* Parameters
+* Headers
+* Authentication information
+* Request body
+
+For example:
+
+```text
+GET /users/123
+```
+
+This could represent a request to retrieve information about user 123.
+
+## What are HTTP Methods?
+
+Many web APIs use **HTTP methods** to describe what the client wants to do.
+
+### GET
+
+Used to retrieve information.
+
+For example:
+
+```text
+GET /products
+```
+
+could request a list of products.
+
+### POST
+
+Used to create or submit new information.
+
+For example:
+
+```text
+POST /orders
+```
+
+could create a new order.
+
+### PUT
+
+Typically used to update an existing resource.
+
+### PATCH
+
+Used to partially update an existing resource.
+
+### DELETE
+
+Used to remove a resource.
+
+A simplified way to remember them is:
+
+**GET → Read**
+
+**POST → Create**
+
+**PUT/PATCH → Update**
+
+**DELETE → Remove**
+
+## What is an API Endpoint?
+
+An **API endpoint** is a specific URL through which an API provides access to a particular resource or operation.
+
+For example:
+
+```text
+/api/users
+```
+
+could represent users.
+
+Another endpoint might be:
+
+```text
+/api/products
+```
+
+for products.
+
+And:
+
+```text
+/api/orders
+```
+
+for orders.
+
+Different endpoints can provide access to different parts of an application or service.
+
+## What is an API Response?
+
+After processing a request, an API sends a **response** back to the client.
+
+A common format for API responses is **JSON (JavaScript Object Notation)**.
+
+For example:
+
+```json
+{
+  "name": "Product A",
+  "price": 499,
+  "available": true
+}
+```
+
+The application can read this data and use it to display information to the user or perform another operation.
+
+## What are API Status Codes?
+
+APIs commonly use **HTTP status codes** to indicate what happened with a request.
+
+Some common examples include:
+
+**200 — OK**
+
+The request was successful.
+
+**201 — Created**
+
+A new resource was successfully created.
+
+**400 — Bad Request**
+
+The request contains invalid or incorrect information.
+
+**401 — Unauthorized**
+
+Authentication is required or the provided authentication is invalid.
+
+**403 — Forbidden**
+
+The client is authenticated but does not have permission to perform the requested action.
+
+**404 — Not Found**
+
+The requested resource could not be found.
+
+**500 — Internal Server Error**
+
+Something went wrong on the server.
+
+Understanding these status codes is extremely useful when troubleshooting APIs.
+
+## What is API Authentication?
+
+Many APIs are not publicly accessible.
+
+They require the application to prove that it has permission to access the service.
+
+Common authentication methods include:
+
+* API keys
+* Bearer tokens
+* OAuth
+* Access tokens
+
+For example, an API might require a token to access customer information.
+
+The application sends the token with the request, and the server verifies it before returning the requested data.
+
+Authentication is particularly important when an API provides access to private, sensitive, or business-critical information.
+
+## What is a REST API?
+
+**REST (Representational State Transfer)** is an architectural style commonly used for designing web APIs.
+
+REST APIs typically use HTTP methods and URLs to interact with resources.
+
+For example:
+
+```text
+GET     /customers
+GET     /customers/123
+POST    /customers
+PATCH   /customers/123
+DELETE  /customers/123
+```
+
+REST APIs are widely used because they provide a simple and standardized way for applications to communicate over the web.
+
+## Why are APIs Important?
+
+APIs allow businesses and developers to build applications by connecting existing systems and services.
+
+For example, an application could combine:
+
+**Payment API**
+
+↓
+
+**Maps API**
+
+↓
+
+**Authentication API**
+
+↓
+
+**AI API**
+
+↓
+
+**Internal Database API**
+
+Instead of building every capability from scratch, developers can integrate existing services.
+
+This makes applications faster to build and easier to connect with other systems.
+
+## APIs and AI Applications
+
+APIs are also a major part of modern AI applications.
+
+An application can communicate with an AI model through an API.
+
+For example:
+
+**User → Application → AI API → LLM → Response → Application → User**
+
+The application sends a prompt to the AI service through an API and receives the model's response.
+
+APIs can also allow AI applications to interact with external tools and systems.
+
+An AI assistant might use APIs to:
+
+* Search information
+* Retrieve customer data
+* Check inventory
+* Send emails
+* Create records
+* Access databases
+* Perform calculations
+
+This is one of the reasons APIs are an important building block for AI-powered applications and AI agents.
+
+## API vs Website
+
+An API and a website can both provide access to information, but they are designed for different purposes.
+
+A **website** is primarily designed for humans to interact with through a visual interface.
+
+An **API** is designed for software applications to communicate with other software.
+
+For example:
+
+**Human → Website → Visual Interface**
+
+**Application → API → Structured Data**
+
+## Final Takeaway
+
+An API provides a structured way for different software systems to communicate.
+
+It allows applications to request information, create or update data, perform actions, and connect with external services without needing to understand how those services work internally.
+
+The basic concept is simple:
+
+> **One application makes a request. Another system processes it. The API returns a response.**
+
+Once you understand APIs, many modern technologies become easier to understand — from web applications and payment systems to data platforms, AI services, and AI agents.

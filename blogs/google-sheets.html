@@ -1,0 +1,235 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Data Analysis in Google Sheets: A Practical Guide - Nandan B M Blogs</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../styles.css" />
+  <style>
+    .post-container {
+      max-width: 780px;
+      margin: 120px auto 72px;
+      padding: 0 24px;
+    }
+    .post-image {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+      border-radius: 8px;
+      border: 1px solid var(--nav-border);
+      margin-bottom: 32px;
+    }
+    .post-content {
+      font-size: 1.1rem;
+      line-height: 1.7;
+      color: #e0e0e0;
+    }
+    .post-content h1 {
+      font-size: clamp(2rem, 4.5vw, 2.8rem);
+      font-weight: 800;
+      margin: 0 0 16px;
+      line-height: 1.15;
+      color: var(--text);
+      letter-spacing: -0.02em;
+    }
+    .post-content h2 {
+      font-size: clamp(1.4rem, 3vw, 1.8rem);
+      font-weight: 700;
+      margin: 40px 0 16px;
+      color: var(--text);
+      letter-spacing: -0.01em;
+    }
+    .post-content h3 {
+      font-size: clamp(1.15rem, 2vw, 1.35rem);
+      font-weight: 700;
+      margin: 28px 0 12px;
+      color: var(--text);
+    }
+    .post-content p {
+      margin: 0 0 24px;
+    }
+    .post-content ul, .post-content ol {
+      margin: 0 0 24px;
+      padding-left: 24px;
+    }
+    .post-content li {
+      margin-bottom: 8px;
+    }
+    .post-content blockquote {
+      border-left: 3px solid var(--red);
+      background: var(--bg-card);
+      margin: 32px 0;
+      padding: 18px 24px;
+      font-style: italic;
+      color: var(--text);
+      border-radius: 0 6px 6px 0;
+    }
+    .post-content code {
+      font-family: SFMono-Regular, Consolas, "Liberation Mono", Menlo, monospace;
+      font-size: 0.9em;
+      background: rgba(255, 255, 255, 0.08);
+      padding: 2px 6px;
+      border-radius: 4px;
+    }
+    .post-content table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 24px 0 32px;
+    }
+    .post-content th, .post-content td {
+      border: 1px solid var(--nav-border);
+      padding: 12px 16px;
+      text-align: left;
+    }
+    .post-content th {
+      background: var(--bg-card);
+      font-weight: 700;
+      color: var(--text);
+    }
+  </style>
+</head>
+<body>
+  <main class="home-screen">
+    <!-- Portable Centered Capsule Navbar -->
+    <nav class="top-nav" aria-label="Portfolio navigation">
+      <div class="top-nav-links" aria-label="Main navigation">
+        <a href="../home.html#" class="top-nav-link">Home</a>
+        <a href="../home.html#professional-title" class="top-nav-link">Journey</a>
+        <a href="../home.html#awards-title" class="top-nav-link">Awards</a>
+        <a href="../home.html#skills-title" class="top-nav-link">Skills</a>
+        <a href="../home.html#featured-title" class="top-nav-link">Projects</a>
+        <a href="https://in.linkedin.com/in/connect-with-nandan-bm" target="_blank" rel="noopener" class="top-nav-link">LinkedIn</a>
+        <a href="/blogs/index.html" class="top-nav-link active">My blogs</a>
+        <a href="../home.html#contact-title" class="top-nav-link">Let's Connect</a>
+      </div>
+    </nav>
+
+    <a class="floating-back" href="index.html" aria-label="Back to blogs listing">Back</a>
+
+    <div class="post-container">
+      <img class="post-image" src="../Blogs_Images/Data Analysis in Google Sheets.png" alt="Google Sheets Data Analysis Banner" />
+      <article class="post-content">
+        <h1>Data Analysis in Google Sheets: A Practical Guide</h1>
+        <p><strong>Google Sheets</strong> is more than a spreadsheet for storing data. With formulas, filters, pivot tables, charts, and built-in analytical functions, it can be used to clean, analyze, visualize, and communicate data without requiring specialized data analysis software.</p>
+        <p>This guide covers the core concepts and techniques used for <strong>data analysis in Google Sheets</strong>.</p>
+
+        <h2>What is Data Analysis?</h2>
+        <p><strong>Data analysis</strong> is the process of examining raw data to find patterns, trends, relationships, and insights that can support better decisions.</p>
+        <p>A typical data analysis workflow includes:</p>
+        <blockquote>
+          <strong>Collect &rarr; Clean &rarr; Transform &rarr; Analyze &rarr; Visualize &rarr; Interpret</strong>
+        </blockquote>
+        <p>The goal isn't simply to calculate numbers. The goal is to understand <strong>what the data is saying</strong>.</p>
+
+        <h2>Preparing Data for Analysis</h2>
+        <p>Before performing analysis, the data should be organized consistently. A good dataset usually follows a simple structure:</p>
+        <ul>
+          <li>Each row represents a record.</li>
+          <li>Each column represents a variable or attribute.</li>
+          <li>The first row contains column headers.</li>
+          <li>Each column contains a consistent type of data.</li>
+          <li>Blank rows and unnecessary formatting are avoided.</li>
+        </ul>
+        <p>For example, a sales dataset might contain:</p>
+        <table>
+          <thead>
+            <tr>
+              <th>Date</th>
+              <th>Product</th>
+              <th>Region</th>
+              <th>Quantity</th>
+              <th>Revenue</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>01/08/2026</td>
+              <td>Product A</td>
+              <td>South</td>
+              <td>12</td>
+              <td>₹24,000</td>
+            </tr>
+            <tr>
+              <td>02/08/2026</td>
+              <td>Product B</td>
+              <td>North</td>
+              <td>8</td>
+              <td>₹16,000</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h2>Data Cleaning in Google Sheets</h2>
+        <p>Real-world datasets often contain duplicates, missing values, inconsistent capitalization, extra spaces, incorrect data types, and formatting errors. Google Sheets provides functions that can help clean this data:</p>
+        <ul>
+          <li><code>TRIM()</code> can remove unnecessary spaces.</li>
+          <li><code>CLEAN()</code> can remove non-printable characters.</li>
+          <li><code>UNIQUE()</code> can identify unique values.</li>
+          <li><code>COUNTBLANK()</code> can help identify missing values.</li>
+        </ul>
+
+        <h2>Using Formulas for Data Analysis</h2>
+        <p>Formulas are one of the most powerful features of Google Sheets. Basic functions like <code>SUM()</code>, <code>AVERAGE()</code>, <code>COUNT()</code>, <code>MIN()</code>, and <code>MAX()</code> can be used to calculate basic statistics.</p>
+        
+        <h3>COUNTIF</h3>
+        <p>Counts values that meet a condition. Example:</p>
+        <pre><code>=COUNTIF(C2:C100,"South")</code></pre>
+        
+        <h3>SUMIF</h3>
+        <p>Calculates a total based on a condition. Example:</p>
+        <pre><code>=SUMIF(C2:C100,"South",E2:E100)</code></pre>
+
+        <h3>IF</h3>
+        <p>Allows data to be categorized based on conditions. Example:</p>
+        <pre><code>=IF(E2>=10000,"High","Low")</code></pre>
+
+        <h2>Pivot Tables</h2>
+        <p>They allow large datasets to be summarized without manually writing complex formulas. For example, a sales dataset can be transformed into a summary showing:</p>
+        <table>
+          <thead>
+            <tr>
+              <th>Region</th>
+              <th>Total Revenue</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>North</td>
+              <td>₹450,000</td>
+            </tr>
+            <tr>
+              <td>South</td>
+              <td>₹620,000</td>
+            </tr>
+            <tr>
+              <td>East</td>
+              <td>₹380,000</td>
+            </tr>
+            <tr>
+              <td>West</td>
+              <td>₹510,000</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h2>Data Visualization</h2>
+        <p>Charts help transform numbers into information that is easier to understand. The appropriate chart depends on the question being answered:</p>
+        <ul>
+          <li><strong>Line chart</strong> &rarr; trends over time</li>
+          <li><strong>Bar chart</strong> &rarr; comparing categories</li>
+          <li><strong>Scatter plot</strong> &rarr; examining relationships between variables</li>
+          <li><strong>Pie chart</strong> &rarr; showing simple proportions</li>
+        </ul>
+
+        <h2>Final Takeaway</h2>
+        <blockquote>
+          "The real value comes from turning raw data into information that helps people make better decisions."
+        </blockquote>
+      </article>
+    </div>
+  </main>
+</body>
+</html>

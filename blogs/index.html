@@ -1,0 +1,200 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Blogs - Nandan B M</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../styles.css" />
+  <style>
+    /* Blogs specific overrides and custom landing styles */
+    .blogs-container {
+      max-width: 1120px;
+      margin: 120px auto 72px;
+      padding: 0 24px;
+    }
+    
+    .blogs-header {
+      margin-bottom: 48px;
+    }
+
+    .blogs-header h1 {
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      font-weight: 800;
+      margin: 0 0 12px;
+      letter-spacing: -0.02em;
+    }
+
+    .blogs-header p {
+      color: var(--muted);
+      font-size: clamp(1rem, 1.5vw, 1.25rem);
+      max-width: 600px;
+      line-height: 1.5;
+      margin: 0;
+    }
+
+    .blogs-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+      gap: 32px;
+    }
+
+    .blog-card {
+      background: var(--bg-card);
+      border: 1px solid var(--nav-border);
+      border-radius: 8px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      transition: transform 0.3s ease, border-color 0.3s ease;
+      cursor: pointer;
+    }
+
+    .blog-card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(229, 9, 20, 0.4);
+    }
+
+    .blog-card-image {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+      border-bottom: 1px solid var(--nav-border);
+      display: block;
+    }
+
+    .blog-card-content {
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+    }
+
+    .blog-card-title {
+      font-size: 1.3rem;
+      font-weight: 700;
+      line-height: 1.3;
+      margin: 0 0 12px;
+      color: var(--text);
+    }
+
+    .blog-card-summary {
+      color: var(--muted);
+      font-size: 0.95rem;
+      line-height: 1.5;
+      margin: 0 0 20px;
+      flex-grow: 1;
+    }
+
+    .blog-card-link {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--red);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: auto;
+    }
+
+    .blog-card:hover .blog-card-link {
+      color: var(--text);
+    }
+  </style>
+</head>
+<body>
+  <main class="home-screen">
+    <!-- Portable Centered Capsule Navbar -->
+    <nav class="top-nav" aria-label="Portfolio navigation">
+      <div class="top-nav-links" aria-label="Main navigation">
+        <a href="../home.html#" class="top-nav-link">Home</a>
+        <a href="../home.html#professional-title" class="top-nav-link">Journey</a>
+        <a href="../home.html#awards-title" class="top-nav-link">Awards</a>
+        <a href="../home.html#skills-title" class="top-nav-link">Skills</a>
+        <a href="../home.html#featured-title" class="top-nav-link">Projects</a>
+        <a href="https://in.linkedin.com/in/connect-with-nandan-bm" target="_blank" rel="noopener" class="top-nav-link">LinkedIn</a>
+        <a href="/blogs/index.html" class="top-nav-link active">My blogs</a>
+        <a href="../home.html#contact-title" class="top-nav-link">Let's Connect</a>
+      </div>
+    </nav>
+
+    <a class="floating-back" href="../home.html" aria-label="Back to home page">Back</a>
+
+    <div class="blogs-container">
+      <header class="blogs-header">
+        <h1>My Blogs</h1>
+        <p>Sharing my thoughts and guides on AI engineering, data analysis, API design, and market research.</p>
+      </header>
+
+      <section class="blogs-grid" aria-label="Blog posts list">
+        <!-- Blog 1: AI Fundamentals -->
+        <article class="blog-card" onclick="location.href='ai-fundamentals.html'">
+          <img class="blog-card-image" src="../Blogs_Images/AI Fundamentals.png" alt="AI Fundamentals banner" />
+          <div class="blog-card-content">
+            <h2 class="blog-card-title">AI Fundamentals: A Beginner's Guide</h2>
+            <p class="blog-card-summary">Understand the core differences between Artificial Intelligence, Machine Learning, Deep Learning, and the emerging capabilities of AI agents.</p>
+            <span class="blog-card-link">
+              Read Article 
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </span>
+          </div>
+        </article>
+
+        <!-- Blog 2: What is an API -->
+        <article class="blog-card" onclick="location.href='what-is-api.html'">
+          <img class="blog-card-image" src="../Blogs_Images/What is an API.png" alt="What is an API banner" />
+          <div class="blog-card-content">
+            <h2 class="blog-card-title">What is an API? A Simple Guide to APIs</h2>
+            <p class="blog-card-summary">A clear, simple introduction to Application Programming Interfaces, how HTTP methods work, endpoints, status codes, and why APIs run the modern web.</p>
+            <span class="blog-card-link">
+              Read Article 
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </span>
+          </div>
+        </article>
+
+        <!-- Blog 3: What is Vibe Coding -->
+        <article class="blog-card" onclick="location.href='vibe-coding.html'">
+          <img class="blog-card-image" src="../Blogs_Images/What is Vibe Coding.png" alt="What is Vibe Coding banner" />
+          <div class="blog-card-content">
+            <h2 class="blog-card-title">What is Vibe Coding? Is It Good or Bad?</h2>
+            <p class="blog-card-summary">Exploring the rise of vibe coding—building applications entirely via AI-generated instructions. Learn when it saves time and how to avoid the hidden bugs.</p>
+            <span class="blog-card-link">
+              Read Article 
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </span>
+          </div>
+        </article>
+
+        <!-- Blog 4: Google Sheets Analysis -->
+        <article class="blog-card" onclick="location.href='google-sheets.html'">
+          <img class="blog-card-image" src="../Blogs_Images/Data Analysis in Google Sheets.png" alt="Data Analysis in Google Sheets banner" />
+          <div class="blog-card-content">
+            <h2 class="blog-card-title">Data Analysis in Google Sheets: A Practical Guide</h2>
+            <p class="blog-card-summary">A complete guide to cleaning and analyzing data using Google Sheets functions, pivot tables, filters, and interactive dashboard systems.</p>
+            <span class="blog-card-link">
+              Read Article 
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </span>
+          </div>
+        </article>
+
+        <!-- Blog 5: Market Research -->
+        <article class="blog-card" onclick="location.href='market-research.html'">
+          <img class="blog-card-image" src="../Blogs_Images/Market Research & Survey Data.png" alt="Market Research & Survey Data banner" />
+          <div class="blog-card-content">
+            <h2 class="blog-card-title">Market Research & Survey Data: Turning Responses into Business Growth</h2>
+            <p class="blog-card-summary">Learn how to run customer market research, clean survey results, segment responses, and translate raw data into actionable business growth strategies.</p>
+            <span class="blog-card-link">
+              Read Article 
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </span>
+          </div>
+        </article>
+      </section>
+    </div>
+  </main>
+</body>
+</html>
