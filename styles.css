@@ -22,27 +22,7 @@
   --corner-plus-color: #ffffff;
 }
 
-body.light-theme {
-  color-scheme: light;
-  --bg: #f8f9fa;
-  --bg-soft: #e9ecef;
-  --bg-card: #ffffff;
-  --bg-card-inner: #f1f3f5;
-  --text: #212529;
-  --muted: #6c757d;
-  --line: #dee2e6;
-  --nav-bg: rgba(255, 255, 255, 0.82);
-  --nav-border: rgba(0, 0, 0, 0.12);
-  --nav-link-color: rgba(0, 0, 0, 0.6);
-  --nav-link-active-bg: rgba(0, 0, 0, 0.06);
-  --input-bg: #ffffff;
-  --input-border: rgba(0, 0, 0, 0.15);
-  --modal-bg: linear-gradient(180deg, #ffffff 0%, #f8f9fa 100%);
-  --modal-border: rgba(0, 0, 0, 0.12);
-  --modal-backdrop: rgba(0, 0, 0, 0.45);
-  --glow-indicator: #e50914;
-  --corner-plus-color: #000000;
-}
+
 
 * {
   box-sizing: border-box;
@@ -1438,51 +1418,9 @@ a {
   animation: shake 0.4s ease-in-out;
 }
 
+
 /* Zoom in on NikithaNayana card image to crop its baked-in black margins */
 .title-card[data-modal="nikithanayana"] .title-logo {
   transform: scale(1.22) !important;
   transform-origin: center center;
-}
-
-/* Sun/Moon Toggle Button Icon Visibility */
-#theme-toggle .sun-icon {
-  display: block;
-}
-#theme-toggle .moon-icon {
-  display: none;
-}
-body.light-theme #theme-toggle .sun-icon {
-  display: none;
-}
-body.light-theme #theme-toggle .moon-icon {
-  display: block;
-}
-
-/* Theme Toggle Button Style */
-.theme-toggle-btn {
-  background: transparent;
-  border: none;
-  cursor: pointer;
-  color: var(--nav-link-color);
-  padding: 6px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: all 0.3s ease;
-}
-.theme-toggle-btn:hover {
-  color: var(--text);
-  background: var(--nav-link-active-bg);
-}
-
-/* Light Theme Video Overlay */
-body.light-theme .hero-section::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: rgba(255, 255, 255, 0.22);
-  z-index: 1;
-  pointer-events: none;
-  transition: background-color 0.3s ease;
 }

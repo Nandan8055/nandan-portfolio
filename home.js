@@ -686,21 +686,5 @@ document.addEventListener("DOMContentLoaded", () => {
 
   window.addEventListener("scroll", updateActiveLink);
   updateActiveLink(); // Trigger on load
-
-  // Theme Toggle Logic
-  const themeToggleBtn = document.getElementById("theme-toggle");
-  const savedTheme = localStorage.getItem("theme");
-  const prefersLight = window.matchMedia("(prefers-color-scheme: light)").matches;
-
-  if (savedTheme === "light" || (!savedTheme && prefersLight)) {
-    document.body.classList.add("light-theme");
-  }
-
-  if (themeToggleBtn) {
-    themeToggleBtn.addEventListener("click", () => {
-      const isLight = document.body.classList.toggle("light-theme");
-      localStorage.setItem("theme", isLight ? "light" : "dark");
-    });
-  }
 });
 
