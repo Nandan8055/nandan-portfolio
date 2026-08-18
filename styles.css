@@ -1062,11 +1062,13 @@ a {
   .top-nav {
     top: 16px;
     padding: 4px 8px;
-    max-width: 92vw;
+    max-width: 95vw;
+    -webkit-mask-image: linear-gradient(to right, #000000 78%, transparent 96%);
+    mask-image: linear-gradient(to right, #000000 78%, transparent 96%);
   }
 
   .top-nav-links {
-    gap: 2px;
+    gap: 4px;
     overflow-x: auto;
     scrollbar-width: none;
     -ms-overflow-style: none;
@@ -1077,7 +1079,7 @@ a {
 
   .top-nav-link {
     font-size: 0.82rem;
-    padding: 6px 12px;
+    padding: 6px 10px;
   }
 
   .floating-back {
