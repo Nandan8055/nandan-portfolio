@@ -715,6 +715,63 @@ document.addEventListener("DOMContentLoaded", () => {
   const cardVisualizer = document.getElementById("card-visualizer");
   const closeBtn = document.getElementById("music-close-btn");
   const reopenBtn = document.getElementById("music-reopen-btn");
+  const audioVisualizer = document.getElementById("audio-visualizer");
+  const vizBars = audioVisualizer ? audioVisualizer.querySelectorAll(".viz-bar") : [];
+
+  // ---- Web Audio API Analyser Setup ----
+  let audioContext = null;
+  let analyser = null;
+  let sourceNode = null;
+  let dataArray = null;
+  let vizAnimId = null;
+  let webAudioReady = false;
+
+  function initWebAudio() {
+    if (webAudioReady) return;
+    try {
+      audioContext = new (window.AudioContext || window.webkitAudioContext)();
+      analyser = audioContext.createAnalyser();
+      analyser.fftSize = 64; // gives us 32 frequency bins — we use 24
+      analyser.smoothingTimeConstant = 0.75;
+      sourceNode = audioContext.createMediaElementSource(audio);
+      sourceNode.connect(analyser);
+      analyser.connect(audioContext.destination);
+      dataArray = new Uint8Array(analyser.frequencyBinCount);
+      webAudioReady = true;
+    } catch (err) {
+      console.log("Web Audio API not available, using CSS fallback:", err);
+    }
+  }
+
+  function startVisualizerLoop() {
+    if (!webAudioReady || !audioVisualizer) return;
+    // Remove CSS fallback class since we have real data
+    audioVisualizer.classList.remove("playing-fallback");
+
+    function animate() {
+      analyser.getByteFrequencyData(dataArray);
+      for (let i = 0; i < vizBars.length; i++) {
+        // Map bar index to frequency bin (skip bin 0 which is DC offset)
+        const binIndex = Math.min(i + 1, dataArray.length - 1);
+        const value = dataArray[binIndex] / 255; // normalize 0-1
+        const scale = Math.max(0.05, value); // minimum visible height
+        vizBars[i].style.transform = `scaleY(${scale})`;
+      }
+      vizAnimId = requestAnimationFrame(animate);
+    }
+    animate();
+  }
+
+  function stopVisualizerLoop() {
+    if (vizAnimId) {
+      cancelAnimationFrame(vizAnimId);
+      vizAnimId = null;
+    }
+    // Reset bars to idle
+    vizBars.forEach(bar => {
+      bar.style.transform = "scaleY(0.05)";
+    });
+  }
 
   // Load initial track
   function loadTrack(index) {
@@ -749,9 +806,22 @@ document.addEventListener("DOMContentLoaded", () => {
   // Play Track
   function playTrack() {
     isPlaying = true;
+    // Initialize Web Audio API on first play (requires user gesture)
+    initWebAudio();
+    // Resume AudioContext if suspended (Chrome policy)
+    if (audioContext && audioContext.state === "suspended") {
+      audioContext.resume();
+    }
     audio.play().then(() => {
       playIcon.innerHTML = `<path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>`;
       cardVisualizer.classList.add("playing");
+      // Start the vertical lines visualizer
+      if (webAudioReady) {
+        startVisualizerLoop();
+      } else if (audioVisualizer) {
+        // CSS fallback
+        audioVisualizer.classList.add("playing-fallback");
+      }
       // Clean up interactions listeners since music is successfully playing
       document.removeEventListener("click", startAutoplay);
       document.removeEventListener("touchstart", startAutoplay);
@@ -767,6 +837,11 @@ document.addEventListener("DOMContentLoaded", () => {
     audio.pause();
     playIcon.innerHTML = `<path d="M8 5v14l11-7z"/>`;
     cardVisualizer.classList.remove("playing");
+    // Stop the vertical lines visualizer
+    stopVisualizerLoop();
+    if (audioVisualizer) {
+      audioVisualizer.classList.remove("playing-fallback");
+    }
   }
 
   // Play/Pause Action
