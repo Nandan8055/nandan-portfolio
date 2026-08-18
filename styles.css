@@ -1522,69 +1522,6 @@ a {
   100% { transform: scaleY(1.0); }
 }
 
-/* ==========================================
-   AUDIO VISUALIZER: VERTICAL LINES
-   ========================================== */
-.audio-visualizer {
-  display: flex;
-  align-items: flex-end;
-  justify-content: center;
-  gap: 2px;
-  width: 100%;
-  height: 48px;
-  padding: 4px 0;
-  overflow: hidden;
-}
-
-.audio-visualizer .viz-bar {
-  flex: 1;
-  min-width: 0;
-  max-width: 8px;
-  height: 100%;
-  border-radius: 2px 2px 0 0;
-  background: linear-gradient(to top, rgba(229, 9, 20, 0.9), rgba(255, 255, 255, 0.85));
-  transform-origin: bottom center;
-  transform: scaleY(0.05);
-  transition: transform 0.08s ease-out;
-  will-change: transform;
-}
-
-/* CSS-only fallback animation when playing (before Web Audio API kicks in) */
-.audio-visualizer.playing-fallback .viz-bar {
-  animation: viz-bounce 0.6s ease-in-out infinite alternate;
-}
-
-.audio-visualizer.playing-fallback .viz-bar:nth-child(1)  { animation-delay: 0.00s; }
-.audio-visualizer.playing-fallback .viz-bar:nth-child(2)  { animation-delay: 0.05s; }
-.audio-visualizer.playing-fallback .viz-bar:nth-child(3)  { animation-delay: 0.10s; }
-.audio-visualizer.playing-fallback .viz-bar:nth-child(4)  { animation-delay: 0.15s; }
-.audio-visualizer.playing-fallback .viz-bar:nth-child(5)  { animation-delay: 0.20s; }
-.audio-visualizer.playing-fallback .viz-bar:nth-child(6)  { animation-delay: 0.10s; }
-.audio-visualizer.playing-fallback .viz-bar:nth-child(7)  { animation-delay: 0.25s; }
-.audio-visualizer.playing-fallback .viz-bar:nth-child(8)  { animation-delay: 0.05s; }
-.audio-visualizer.playing-fallback .viz-bar:nth-child(9)  { animation-delay: 0.30s; }
-.audio-visualizer.playing-fallback .viz-bar:nth-child(10) { animation-delay: 0.12s; }
-.audio-visualizer.playing-fallback .viz-bar:nth-child(11) { animation-delay: 0.22s; }
-.audio-visualizer.playing-fallback .viz-bar:nth-child(12) { animation-delay: 0.08s; }
-.audio-visualizer.playing-fallback .viz-bar:nth-child(13) { animation-delay: 0.18s; }
-.audio-visualizer.playing-fallback .viz-bar:nth-child(14) { animation-delay: 0.28s; }
-.audio-visualizer.playing-fallback .viz-bar:nth-child(15) { animation-delay: 0.04s; }
-.audio-visualizer.playing-fallback .viz-bar:nth-child(16) { animation-delay: 0.16s; }
-.audio-visualizer.playing-fallback .viz-bar:nth-child(17) { animation-delay: 0.26s; }
-.audio-visualizer.playing-fallback .viz-bar:nth-child(18) { animation-delay: 0.06s; }
-.audio-visualizer.playing-fallback .viz-bar:nth-child(19) { animation-delay: 0.14s; }
-.audio-visualizer.playing-fallback .viz-bar:nth-child(20) { animation-delay: 0.24s; }
-.audio-visualizer.playing-fallback .viz-bar:nth-child(21) { animation-delay: 0.02s; }
-.audio-visualizer.playing-fallback .viz-bar:nth-child(22) { animation-delay: 0.20s; }
-.audio-visualizer.playing-fallback .viz-bar:nth-child(23) { animation-delay: 0.10s; }
-.audio-visualizer.playing-fallback .viz-bar:nth-child(24) { animation-delay: 0.30s; }
-
-@keyframes viz-bounce {
-  0%   { transform: scaleY(0.08); }
-  50%  { transform: scaleY(0.65); }
-  100% { transform: scaleY(0.25); }
-}
-
 .music-card {
   width: 300px;
   background: rgba(18, 18, 18, 0.6);
@@ -1923,8 +1860,7 @@ a {
   #prev-btn,
   #card-visualizer,
   #volume-toggle-btn,
-  .music-volume-panel,
-  .audio-visualizer {
+  .music-volume-panel {
     display: none !important;
   }
 
