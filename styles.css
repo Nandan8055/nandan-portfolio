@@ -1442,22 +1442,6 @@ a {
   gap: 12px;
 }
 
-/* Borderless visualizer trigger button */
-.music-trigger {
-  background: transparent;
-  border: none;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 8px;
-  transition: transform 0.2s ease;
-}
-
-.music-trigger:hover {
-  transform: scale(1.15);
-}
-
 .music-visualizer {
   display: flex;
   align-items: flex-end;
@@ -1498,20 +1482,9 @@ a {
   border-radius: 16px;
   padding: 16px;
   box-shadow: 0 16px 40px rgba(0, 0, 0, 0.6);
-  opacity: 0;
-  pointer-events: none;
-  transform: scale(0.9) translateY(10px);
-  transform-origin: bottom left;
-  transition: opacity 0.3s cubic-bezier(0.16, 1, 0.3, 1), transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
   display: flex;
   flex-direction: column;
   gap: 16px;
-}
-
-.floating-music-player.expanded .music-card {
-  opacity: 1;
-  pointer-events: auto;
-  transform: scale(1) translateY(0);
 }
 
 .music-header {

@@ -691,15 +691,208 @@ document.addEventListener("DOMContentLoaded", () => {
     { title: "Ezio's Family", src: "Music/Assassin's Creed 2 Ezio's Family.mp3", cover: "Music/Assassin's Creed 2 Ezio's Family.jpg" },
     { title: "Gangsta's Paradise", src: "Music/Gangsta's Paradise.mp3", cover: "Music/Gangsta's Paradise.jpg" },
     { title: "Way Down We Go", src: "Music/way down we go.mp3", cover: "Music/way down we go.jpg" }
+  } else {
+    modalRelated.hidden = true;
+  }
+
+  modal.classList.add("is-open");
+  modal.setAttribute("aria-hidden", "false");
+  document.body.classList.add("modal-open");
+}
+
+document.querySelectorAll("[data-modal]").forEach((card) => {
+  card.addEventListener("click", () => openModal(card.dataset.modal));
+});
+
+document.querySelectorAll("[data-close-modal]").forEach((closeControl) => {
+  closeControl.addEventListener("click", () => {
+    modal.classList.remove("is-open");
+    modal.setAttribute("aria-hidden", "true");
+    document.body.classList.remove("modal-open");
+  });
+});
+
+document.addEventListener("keydown", (event) => {
+  if (event.key === "Escape" && modal.classList.contains("is-open")) {
+    modal.classList.remove("is-open");
+    modal.setAttribute("aria-hidden", "true");
+    document.body.classList.remove("modal-open");
+  }
+});
+
+// Contact form — submits to Vercel serverless function with Resend, falls back to mailto if local dev
+function handleContactSubmit(event) {
+  event.preventDefault();
+  const form = event.target;
+  const name = form.elements["name"].value.trim();
+  const email = form.elements["email"].value.trim();
+  const phone = form.elements["phone"]?.value.trim() || "";
+  const message = form.elements["message"].value.trim();
+
+  const btn = document.getElementById("contact-submit-btn");
+  const success = document.getElementById("contact-success");
+  const successText = document.getElementById("contact-success-text");
+  const errorEl = document.getElementById("contact-error");
+  const errorText = document.getElementById("contact-error-text");
+
+  // Reset display states
+  if (success) success.hidden = true;
+  if (errorEl) errorEl.hidden = true;
+
+  // Clear previous highlights
+  const fields = ["name", "email", "phone", "message"];
+  fields.forEach(field => {
+    const el = form.elements[field];
+    if (el) el.classList.remove("is-invalid");
+  });
+
+  // Validate missing fields
+  const missing = [];
+  if (!name) {
+    missing.push("Name");
+    form.elements["name"].classList.add("is-invalid");
+  }
+  if (!email) {
+    missing.push("Email");
+    form.elements["email"].classList.add("is-invalid");
+  }
+  if (!phone) {
+    missing.push("Phone");
+    form.elements["phone"].classList.add("is-invalid");
+  }
+  if (!message) {
+    missing.push("Message");
+    form.elements["message"].classList.add("is-invalid");
+  }
+
+  if (missing.length > 0) {
+    // Shake animation on form
+    form.classList.remove("shake-animation");
+    void form.offsetWidth; // Trigger reflow to restart animation
+    form.classList.add("shake-animation");
+
+    // Dynamic, professional error messages
+    let msg = "";
+    if (missing.length === 1) {
+      if (missing[0] === "Name") msg = "Please enter your name so I know who is reaching out.";
+      else if (missing[0] === "Email") msg = "An email address is required so I can reply back to you.";
+      else if (missing[0] === "Phone") msg = "Please provide your phone number so we can easily connect.";
+      else if (missing[0] === "Message") msg = "Please write a brief message explaining how I can help.";
+    } else {
+      msg = "Almost there! Please fill in all the highlighted fields to get in touch.";
+    }
+
+    if (errorEl && errorText) {
+      errorText.textContent = msg;
+      errorEl.hidden = false;
+    }
+
+    // Focus the first missing field
+    const firstMissingField = form.elements[missing[0].toLowerCase()];
+    if (firstMissingField) {
+      firstMissingField.focus();
+    }
+    return;
+  }
+
+  btn.disabled = true;
+  btn.textContent = "Sending...";
+
+  // Attempt to call Vercel Serverless Function
+  fetch("/api/send", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ name, email, phone, message }),
+  })
+    .then(async (response) => {
+      if (response.ok) {
+        if (successText) successText.textContent = "Thank you for your message! I'll get back to you shortly.";
+        success.hidden = false;
+        form.reset();
+        setTimeout(() => {
+          btn.disabled = false;
+          btn.textContent = "Submit";
+          success.hidden = true;
+        }, 4000);
+      } else {
+        const errorData = await response.json();
+        throw new Error(errorData.error || "Backend failed");
+      }
+    })
+    .catch((error) => {
+      // Fallback to mailto if serverless function is not available (e.g. running locally)
+      console.warn("Serverless API failed/not available. Falling back to mailto client...", error);
+      
+      const subject = encodeURIComponent(`Portfolio message from ${name}`);
+      const body = encodeURIComponent(
+        `Name: ${name}\nEmail: ${email}${phone ? `\nPhone: ${phone}` : ""}\n\n${message}`
+      );
+      window.location.href = `mailto:nandan.b.muralidhar@gmail.com?subject=${subject}&body=${body}`;
+
+      btn.textContent = "Sent!";
+      if (successText) successText.textContent = "Opening your default email client to finish sending...";
+      success.hidden = false;
+      setTimeout(() => {
+        form.reset();
+        btn.disabled = false;
+        btn.textContent = "Submit";
+        success.hidden = true;
+      }, 4000);
+    });
+}
+
+// Dynamic scrollspy for capsule navbar
+document.addEventListener("DOMContentLoaded", () => {
+  const navLinks = document.querySelectorAll(".top-nav-link");
+  
+  // Set Home as active initially
+  const homeLink = Array.from(navLinks).find(link => link.getAttribute("href") === "#");
+  if (homeLink) homeLink.classList.add("active");
+
+  function updateActiveLink() {
+    const scrollPosition = window.scrollY + window.innerHeight / 3;
+    let activeLink = homeLink;
+
+    navLinks.forEach(link => {
+      const targetId = link.getAttribute("href");
+      if (targetId && targetId.startsWith("#") && targetId.length > 1) {
+        const targetElement = document.querySelector(targetId);
+        if (targetElement) {
+          const elementTop = targetElement.getBoundingClientRect().top + window.scrollY;
+          if (scrollPosition >= elementTop) {
+            activeLink = link;
+          }
+        }
+      }
+    });
+
+    navLinks.forEach(link => {
+      if (link.getAttribute("href").startsWith("#")) {
+        link.classList.remove("active");
+      }
+    });
+    
+    if (activeLink) {
+      activeLink.classList.add("active");
+    }
+  }
+
+  // ==========================================
+  // FLOATING MUSIC PLAYER CONTROLLER SYSTEM
+  // ==========================================
+  const tracks = [
+    { title: "Ezio's Family", src: "Music/Assassin's Creed 2 Ezio's Family.mp3", cover: "Music/Assassin's Creed 2 Ezio's Family.jpg" },
+    { title: "Gangsta's Paradise", src: "Music/Gangsta's Paradise.mp3", cover: "Music/Gangsta's Paradise.jpg" },
+    { title: "Way Down We Go", src: "Music/way down we go.mp3", cover: "Music/way down we go.jpg" }
   ];
 
   let currentTrackIndex = 0;
   let isPlaying = false;
   const audio = new Audio();
-
   // Elements
   const playerContainer = document.getElementById("music-player");
-  const triggerBtn = document.getElementById("music-trigger");
   const playBtn = document.getElementById("play-btn");
   const playIcon = document.getElementById("play-icon");
   const prevBtn = document.getElementById("prev-btn");
@@ -713,7 +906,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const volumeSlider = document.getElementById("volume-slider");
   const volumeToggleBtn = document.getElementById("volume-toggle-btn");
   const volumePanel = document.getElementById("music-volume-panel");
-  const triggerVisualizer = document.getElementById("trigger-visualizer");
   const cardVisualizer = document.getElementById("card-visualizer");
 
   // Load initial track
@@ -737,7 +929,6 @@ document.addEventListener("DOMContentLoaded", () => {
     isPlaying = true;
     audio.play().then(() => {
       playIcon.innerHTML = `<path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>`;
-      triggerVisualizer.classList.add("playing");
       cardVisualizer.classList.add("playing");
     }).catch(err => {
       console.log("Autoplay blocked or playback error:", err);
@@ -750,7 +941,6 @@ document.addEventListener("DOMContentLoaded", () => {
     isPlaying = false;
     audio.pause();
     playIcon.innerHTML = `<path d="M8 5v14l11-7z"/>`;
-    triggerVisualizer.classList.remove("playing");
     cardVisualizer.classList.remove("playing");
   }
 
@@ -813,20 +1003,13 @@ document.addEventListener("DOMContentLoaded", () => {
     audio.currentTime = (clickX / width) * duration;
   }
 
-  // Toggle expanded player card view
-  triggerBtn.addEventListener("click", (e) => {
-    e.stopPropagation();
-    playerContainer.classList.toggle("expanded");
-  });
-
-  // Prevent clicks on player card from closing it
+  // Prevent clicks on player card from closing volume panel
   document.getElementById("music-card").addEventListener("click", (e) => {
     e.stopPropagation();
   });
 
-  // Close player when clicking anywhere else on page
+  // Close volume panel when clicking anywhere else on page
   document.addEventListener("click", () => {
-    playerContainer.classList.remove("expanded");
     volumePanel.hidden = true;
   });
 
