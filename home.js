@@ -926,6 +926,17 @@ document.addEventListener("DOMContentLoaded", () => {
 
   loadTrack(currentTrackIndex);
 
+  // Play as soon as user clicks or touches anywhere on the screen
+  const startAutoplay = () => {
+    if (!isPlaying) {
+      playTrack();
+    }
+    document.removeEventListener("click", startAutoplay);
+    document.removeEventListener("touchstart", startAutoplay);
+  };
+  document.addEventListener("click", startAutoplay);
+  document.addEventListener("touchstart", startAutoplay);
+
   // Play Track
   function playTrack() {
     isPlaying = true;
@@ -1053,11 +1064,14 @@ document.addEventListener("DOMContentLoaded", () => {
     localStorage.setItem("portfolio-music-volume", e.target.value);
   });
 
-  // Retrieve stored volume preference
+  // Retrieve stored volume preference, fallback to 40% (0.4)
   const storedVolume = localStorage.getItem("portfolio-music-volume");
   if (storedVolume !== null) {
     audio.volume = parseFloat(storedVolume);
     volumeSlider.value = storedVolume;
+  } else {
+    audio.volume = 0.4;
+    volumeSlider.value = 0.4;
   }
 
   window.addEventListener("scroll", updateActiveLink);
