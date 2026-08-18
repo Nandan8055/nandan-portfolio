@@ -711,7 +711,10 @@ document.addEventListener("DOMContentLoaded", () => {
   const currentTimeDisplay = document.getElementById("music-current-time");
   const durationDisplay = document.getElementById("music-duration");
   const volumeSlider = document.getElementById("volume-slider");
-  const playlistItems = document.querySelectorAll("#music-playlist .playlist-item");
+  const volumeToggleBtn = document.getElementById("volume-toggle-btn");
+  const volumePanel = document.getElementById("music-volume-panel");
+  const triggerVisualizer = document.getElementById("trigger-visualizer");
+  const cardVisualizer = document.getElementById("card-visualizer");
 
   // Load initial track
   function loadTrack(index) {
@@ -721,15 +724,6 @@ document.addEventListener("DOMContentLoaded", () => {
     musicCover.src = tracks[index].cover;
     musicCover.alt = `${tracks[index].title} Cover Art`;
     
-    // Update active state in playlist DOM
-    playlistItems.forEach((item, idx) => {
-      if (idx === index) {
-        item.classList.add("active");
-      } else {
-        item.classList.remove("active");
-      }
-    });
-
     // Reset progress details on load
     progressBar.style.width = "0%";
     currentTimeDisplay.textContent = "0:00";
@@ -743,7 +737,8 @@ document.addEventListener("DOMContentLoaded", () => {
     isPlaying = true;
     audio.play().then(() => {
       playIcon.innerHTML = `<path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>`;
-      triggerBtn.classList.add("playing");
+      triggerVisualizer.classList.add("playing");
+      cardVisualizer.classList.add("playing");
     }).catch(err => {
       console.log("Autoplay blocked or playback error:", err);
       isPlaying = false;
@@ -755,7 +750,8 @@ document.addEventListener("DOMContentLoaded", () => {
     isPlaying = false;
     audio.pause();
     playIcon.innerHTML = `<path d="M8 5v14l11-7z"/>`;
-    triggerBtn.classList.remove("playing");
+    triggerVisualizer.classList.remove("playing");
+    cardVisualizer.classList.remove("playing");
   }
 
   // Play/Pause Action
@@ -831,12 +827,19 @@ document.addEventListener("DOMContentLoaded", () => {
   // Close player when clicking anywhere else on page
   document.addEventListener("click", () => {
     playerContainer.classList.remove("expanded");
+    volumePanel.hidden = true;
   });
 
   // Buttons event listeners
   playBtn.addEventListener("click", togglePlay);
   nextBtn.addEventListener("click", nextTrack);
   prevBtn.addEventListener("click", prevTrack);
+
+  // Toggle Volume Panel
+  volumeToggleBtn.addEventListener("click", (e) => {
+    e.stopPropagation();
+    volumePanel.hidden = !volumePanel.hidden;
+  });
 
   // Audio events
   audio.addEventListener("timeupdate", updateProgress);
@@ -865,16 +868,6 @@ document.addEventListener("DOMContentLoaded", () => {
     volumeSlider.value = storedVolume;
   }
 
-  // Playlist clicks
-  playlistItems.forEach((item) => {
-    item.addEventListener("click", () => {
-      const idx = parseInt(item.getAttribute("data-index"));
-      loadTrack(idx);
-      playTrack();
-    });
-  });
-
   window.addEventListener("scroll", updateActiveLink);
   updateActiveLink(); // Trigger on load
 });
-
