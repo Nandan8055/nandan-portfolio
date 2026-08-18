@@ -1061,25 +1061,27 @@ a {
 
   .top-nav {
     top: 16px;
-    padding: 4px 8px;
+    padding: 8px 12px;
     max-width: 95vw;
-    -webkit-mask-image: linear-gradient(to right, #000000 78%, transparent 96%);
-    mask-image: linear-gradient(to right, #000000 78%, transparent 96%);
+    border-radius: 16px !important;
+    -webkit-mask-image: none !important;
+    mask-image: none !important;
   }
 
   .top-nav-links {
-    gap: 4px;
-    overflow-x: auto;
-    scrollbar-width: none;
-    -ms-overflow-style: none;
-  }
-  .top-nav-links::-webkit-scrollbar {
-    display: none;
+    gap: 8px 6px;
+    flex-wrap: wrap;
+    justify-content: center;
+    overflow-x: visible;
   }
 
   .top-nav-link {
-    font-size: 0.82rem;
+    font-size: 0.8rem;
     padding: 6px 10px;
+  }
+
+  .top-nav-link.active::before {
+    display: none !important;
   }
 
   .floating-back {
