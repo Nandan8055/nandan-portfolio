@@ -743,12 +743,18 @@ document.addEventListener("DOMContentLoaded", () => {
   document.addEventListener("click", startAutoplay);
   document.addEventListener("touchstart", startAutoplay);
 
+  // Try to play immediately on load (will succeed if user gesture is delegated or MEI is high)
+  playTrack();
+
   // Play Track
   function playTrack() {
     isPlaying = true;
     audio.play().then(() => {
       playIcon.innerHTML = `<path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>`;
       cardVisualizer.classList.add("playing");
+      // Clean up interactions listeners since music is successfully playing
+      document.removeEventListener("click", startAutoplay);
+      document.removeEventListener("touchstart", startAutoplay);
     }).catch(err => {
       console.log("Autoplay blocked or playback error:", err);
       isPlaying = false;
