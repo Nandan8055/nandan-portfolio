@@ -714,6 +714,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const volumePanel = document.getElementById("music-volume-panel");
   const cardVisualizer = document.getElementById("card-visualizer");
   const closeBtn = document.getElementById("music-close-btn");
+  const reopenBtn = document.getElementById("music-reopen-btn");
 
   // Load initial track
   function loadTrack(index) {
@@ -846,7 +847,14 @@ document.addEventListener("DOMContentLoaded", () => {
   closeBtn.addEventListener("click", (e) => {
     e.stopPropagation();
     playerContainer.style.display = "none";
-    pauseTrack();
+    reopenBtn.style.display = "flex";
+  });
+
+  // Reopen music player
+  reopenBtn.addEventListener("click", (e) => {
+    e.stopPropagation();
+    playerContainer.style.display = "block";
+    reopenBtn.style.display = "none";
   });
 
   // Audio events

@@ -1511,6 +1511,44 @@ a {
   transform: scale(1.1);
 }
 
+.music-reopen-btn {
+  position: fixed;
+  bottom: 24px;
+  left: 24px;
+  z-index: 2500;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(18, 18, 18, 0.6);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  padding: 10px 18px;
+  border-radius: 50px;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.music-reopen-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.25);
+  transform: scale(1.05);
+}
+
+@media (max-width: 768px) {
+  .music-reopen-btn {
+    bottom: 16px;
+    left: 16px;
+    padding: 8px 14px;
+    font-size: 13px;
+  }
+}
+
 .music-header {
   display: flex;
   align-items: center;
