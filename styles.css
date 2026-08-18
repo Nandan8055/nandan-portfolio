@@ -1686,11 +1686,13 @@ a {
   background: rgba(255, 255, 255, 0.15);
   border-radius: 2px;
   -webkit-appearance: none;
+  appearance: none;
   cursor: pointer;
 }
 
 .volume-slider::-webkit-slider-thumb {
   -webkit-appearance: none;
+  appearance: none;
   width: 10px;
   height: 10px;
   border-radius: 50%;
