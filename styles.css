@@ -392,6 +392,10 @@ a {
   border-color: var(--red);
 }
 
+.mobile-back-link {
+  display: none !important;
+}
+
 .hero-section {
   align-items: flex-end;
   display: flex;
@@ -1077,9 +1081,22 @@ a {
   }
 
   .floating-back {
-    top: 16px;
-    bottom: auto;
-    left: 16px;
+    display: none !important;
+  }
+
+  .mobile-back-link {
+    display: inline-block !important;
+    background: rgba(229, 9, 20, 0.82) !important;
+    color: #ffffff !important;
+    font-weight: 700 !important;
+    border-radius: 999px !important;
+    margin-right: 4px !important;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4) !important;
+  }
+
+  .mobile-back-link:hover,
+  .mobile-back-link:focus-visible {
+    background: var(--red) !important;
   }
 
   .nav-pill {
@@ -1704,6 +1721,12 @@ a {
   .floating-music-player {
     bottom: 16px;
     left: 16px;
+    right: 16px;
+    width: auto;
+  }
+  .music-card {
+    width: 100%;
+    max-width: none;
   }
 }
 
