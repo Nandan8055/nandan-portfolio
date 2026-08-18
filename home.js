@@ -642,201 +642,6 @@ function handleContactSubmit(event) {
       setTimeout(() => {
         form.reset();
         btn.disabled = false;
-modalRole.textContent = content.role;
-  if (content.link) {
-    modalLink.href = content.link;
-    modalLink.textContent = content.linkLabel || "Open link";
-    modalLink.hidden = false;
-  } else {
-    modalLink.hidden = true;
-    modalLink.removeAttribute("href");
-  }
-  modalList.replaceChildren(
-    ...content.points.map((point) => {
-      const item = document.createElement("li");
-      item.textContent = point;
-      return item;
-    })
-  );
-
-  modalRelated.replaceChildren();
-  if (content.related?.length || content.gallery?.length) {
-    const heading = document.createElement("h3");
-    heading.textContent = content.relatedTitle || content.galleryTitle || "Related";
-    modalRelated.append(heading);
-
-    const row = document.createElement("div");
-    row.className = content.gallery?.length ? "related-row certificate-gallery" : "related-row";
-    (content.related || content.gallery).forEach((relatedItem) => {
-      const button = document.createElement("button");
-      button.className = "related-card";
-      button.type = "button";
-      button.addEventListener("click", () => {
-        if (relatedItem.id) {
-          openModal(relatedItem.id);
-        } else {
-          openCertificateImage(relatedItem);
-        }
-      });
-
-      const image = document.createElement("img");
-      image.src = relatedItem.image;
-      image.alt = relatedItem.label;
-
-      const label = document.createElement("span");
-      label.textContent = relatedItem.label;
-
-      button.append(image, label);
-      row.append(button);
-    });
-    modalRelated.append(row);
-    modalRelated.hidden = false;
-  } else {
-    modalRelated.hidden = true;
-  }
-
-  modal.classList.add("is-open");
-  modal.setAttribute("aria-hidden", "false");
-  document.body.classList.add("modal-open");
-}
-
-document.querySelectorAll("[data-modal]").forEach((card) => {
-  card.addEventListener("click", () => openModal(card.dataset.modal));
-});
-
-document.querySelectorAll("[data-close-modal]").forEach((closeControl) => {
-  closeControl.addEventListener("click", () => {
-    modal.classList.remove("is-open");
-    modal.setAttribute("aria-hidden", "true");
-    document.body.classList.remove("modal-open");
-  });
-});
-
-document.addEventListener("keydown", (event) => {
-  if (event.key === "Escape" && modal.classList.contains("is-open")) {
-    modal.classList.remove("is-open");
-    modal.setAttribute("aria-hidden", "true");
-    document.body.classList.remove("modal-open");
-  }
-});
-
-// Contact form — submits to Vercel serverless function with Resend, falls back to mailto if local dev
-function handleContactSubmit(event) {
-  event.preventDefault();
-  const form = event.target;
-  const name = form.elements["name"].value.trim();
-  const email = form.elements["email"].value.trim();
-  const phone = form.elements["phone"]?.value.trim() || "";
-  const message = form.elements["message"].value.trim();
-
-  const btn = document.getElementById("contact-submit-btn");
-  const success = document.getElementById("contact-success");
-  const successText = document.getElementById("contact-success-text");
-  const errorEl = document.getElementById("contact-error");
-  const errorText = document.getElementById("contact-error-text");
-
-  // Reset display states
-  if (success) success.hidden = true;
-  if (errorEl) errorEl.hidden = true;
-
-  // Clear previous highlights
-  const fields = ["name", "email", "phone", "message"];
-  fields.forEach(field => {
-    const el = form.elements[field];
-    if (el) el.classList.remove("is-invalid");
-  });
-
-  // Validate missing fields
-  const missing = [];
-  if (!name) {
-    missing.push("Name");
-    form.elements["name"].classList.add("is-invalid");
-  }
-  if (!email) {
-    missing.push("Email");
-    form.elements["email"].classList.add("is-invalid");
-  }
-  if (!phone) {
-    missing.push("Phone");
-    form.elements["phone"].classList.add("is-invalid");
-  }
-  if (!message) {
-    missing.push("Message");
-    form.elements["message"].classList.add("is-invalid");
-  }
-
-  if (missing.length > 0) {
-    // Shake animation on form
-    form.classList.remove("shake-animation");
-    void form.offsetWidth; // Trigger reflow to restart animation
-    form.classList.add("shake-animation");
-
-    // Dynamic, professional error messages
-    let msg = "";
-    if (missing.length === 1) {
-      if (missing[0] === "Name") msg = "Please enter your name so I know who is reaching out.";
-      else if (missing[0] === "Email") msg = "An email address is required so I can reply back to you.";
-      else if (missing[0] === "Phone") msg = "Please provide your phone number so we can easily connect.";
-      else if (missing[0] === "Message") msg = "Please write a brief message explaining how I can help.";
-    } else {
-      msg = "Almost there! Please fill in all the highlighted fields to get in touch.";
-    }
-
-    if (errorEl && errorText) {
-      errorText.textContent = msg;
-      errorEl.hidden = false;
-    }
-
-    // Focus the first missing field
-    const firstMissingField = form.elements[missing[0].toLowerCase()];
-    if (firstMissingField) {
-      firstMissingField.focus();
-    }
-    return;
-  }
-
-  btn.disabled = true;
-  btn.textContent = "Sending...";
-
-  // Attempt to call Vercel Serverless Function
-  fetch("/api/send", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({ name, email, phone, message }),
-  })
-    .then(async (response) => {
-      if (response.ok) {
-        if (successText) successText.textContent = "Thank you for your message! I'll get back to you shortly.";
-        success.hidden = false;
-        form.reset();
-        setTimeout(() => {
-          btn.disabled = false;
-          btn.textContent = "Submit";
-          success.hidden = true;
-        }, 4000);
-      } else {
-        const errorData = await response.json();
-        throw new Error(errorData.error || "Backend failed");
-      }
-    })
-    .catch((error) => {
-      // Fallback to mailto if serverless function is not available (e.g. running locally)
-      console.warn("Serverless API failed/not available. Falling back to mailto client...", error);
-      
-      const subject = encodeURIComponent(`Portfolio message from ${name}`);
-      const body = encodeURIComponent(
-        `Name: ${name}\nEmail: ${email}${phone ? `\nPhone: ${phone}` : ""}\n\n${message}`
-      );
-      window.location.href = `mailto:nandan.b.muralidhar@gmail.com?subject=${subject}&body=${body}`;
-
-      btn.textContent = "Sent!";
-      if (successText) successText.textContent = "Opening your default email client to finish sending...";
-      success.hidden = false;
-      setTimeout(() => {
-        form.reset();
-        btn.disabled = false;
         btn.textContent = "Submit";
         success.hidden = true;
       }, 4000);
@@ -925,6 +730,17 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   loadTrack(currentTrackIndex);
+
+  // Auto-play on first click/touch interaction on the page
+  const startAutoplay = () => {
+    if (!isPlaying) {
+      playTrack();
+    }
+    document.removeEventListener("click", startAutoplay);
+    document.removeEventListener("touchstart", startAutoplay);
+  };
+  document.addEventListener("click", startAutoplay);
+  document.addEventListener("touchstart", startAutoplay);
 
   // Play Track
   function playTrack() {
@@ -1053,11 +869,14 @@ document.addEventListener("DOMContentLoaded", () => {
     localStorage.setItem("portfolio-music-volume", e.target.value);
   });
 
-  // Retrieve stored volume preference
+  // Retrieve stored volume preference, fallback to 40% (0.4)
   const storedVolume = localStorage.getItem("portfolio-music-volume");
   if (storedVolume !== null) {
     audio.volume = parseFloat(storedVolume);
     volumeSlider.value = storedVolume;
+  } else {
+    audio.volume = 0.4;
+    volumeSlider.value = 0.4;
   }
 
   window.addEventListener("scroll", updateActiveLink);

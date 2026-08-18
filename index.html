@@ -63,6 +63,11 @@
           window.location.href = profileLink.href;
         }, 720);
       });
+
+      // Clear entering-portfolio transition state when page is shown again (handles browser back cache freeze)
+      window.addEventListener("pageshow", (event) => {
+        document.body.classList.remove("entering-portfolio");
+      });
     </script>
     <script>
       (function() {
