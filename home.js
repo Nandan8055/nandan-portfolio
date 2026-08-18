@@ -684,6 +684,185 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
+  // ==========================================
+  // FLOATING MUSIC PLAYER CONTROLLER SYSTEM
+  // ==========================================
+  const tracks = [
+    { title: "Ezio's Family (Assassin's Creed 2)", src: "Music/Assassin's Creed 2 Ezio's Family.mp3" },
+    { title: "Gangsta's Paradise", src: "Music/Gangsta's Paradise.mp3" },
+    { title: "Way Down We Go", src: "Music/way down we go.mp3" }
+  ];
+
+  let currentTrackIndex = 0;
+  let isPlaying = false;
+  const audio = new Audio();
+
+  // Elements
+  const playerContainer = document.getElementById("music-player");
+  const triggerBtn = document.getElementById("music-trigger");
+  const playBtn = document.getElementById("play-btn");
+  const playIcon = document.getElementById("play-icon");
+  const prevBtn = document.getElementById("prev-btn");
+  const nextBtn = document.getElementById("next-btn");
+  const visualizer = document.getElementById("music-visualizer");
+  const musicTitle = document.getElementById("music-title");
+  const progressBar = document.getElementById("music-progress-bar");
+  const progressContainer = document.getElementById("music-progress-container");
+  const timeDisplay = document.getElementById("music-time-display");
+  const volumeSlider = document.getElementById("volume-slider");
+  const playlistItems = document.querySelectorAll("#music-playlist .playlist-item");
+
+  // Load initial track
+  function loadTrack(index) {
+    currentTrackIndex = index;
+    audio.src = tracks[index].src;
+    musicTitle.textContent = tracks[index].title;
+    
+    // Update active state in playlist DOM
+    playlistItems.forEach((item, idx) => {
+      if (idx === index) {
+        item.classList.add("active");
+      } else {
+        item.classList.remove("active");
+      }
+    });
+  }
+
+  loadTrack(currentTrackIndex);
+
+  // Play Track
+  function playTrack() {
+    isPlaying = true;
+    audio.play().then(() => {
+      playIcon.innerHTML = `<rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/>`;
+      triggerBtn.classList.add("playing");
+      visualizer.classList.add("playing");
+    }).catch(err => {
+      console.log("Autoplay blocked or playback error:", err);
+      isPlaying = false;
+    });
+  }
+
+  // Pause Track
+  function pauseTrack() {
+    isPlaying = false;
+    audio.pause();
+    playIcon.innerHTML = `<polygon points="5 3 19 12 5 21 5 3"/>`;
+    triggerBtn.classList.remove("playing");
+    visualizer.classList.remove("playing");
+  }
+
+  // Play/Pause Action
+  function togglePlay() {
+    if (isPlaying) {
+      pauseTrack();
+    } else {
+      playTrack();
+    }
+  }
+
+  // Next Track
+  function nextTrack() {
+    let nextIndex = (currentTrackIndex + 1) % tracks.length;
+    loadTrack(nextIndex);
+    if (isPlaying) {
+      playTrack();
+    }
+  }
+
+  // Prev Track
+  function prevTrack() {
+    let prevIndex = (currentTrackIndex - 1 + tracks.length) % tracks.length;
+    loadTrack(prevIndex);
+    if (isPlaying) {
+      playTrack();
+    }
+  }
+
+  // Update Progress & Time
+  function updateProgress(e) {
+    const { duration, currentTime } = e.srcElement;
+    if (isNaN(duration)) return;
+    
+    // Update progress bar width
+    const progressPercent = (currentTime / duration) * 100;
+    progressBar.style.width = `${progressPercent}%`;
+
+    // Format times
+    const formatTime = (time) => {
+      const mins = Math.floor(time / 60);
+      const secs = Math.floor(time % 60);
+      return `${mins}:${secs < 10 ? '0' : ''}${secs}`;
+    };
+
+    timeDisplay.textContent = `${formatTime(currentTime)} / ${formatTime(duration)}`;
+  }
+
+  // Set Progress on Seek
+  function setProgress(e) {
+    const progressBg = progressContainer.querySelector(".music-progress-bar-bg");
+    const width = progressBg.clientWidth;
+    const clickX = e.offsetX;
+    const duration = audio.duration;
+    if (isNaN(duration)) return;
+    
+    audio.currentTime = (clickX / width) * duration;
+  }
+
+  // Toggle expanded player card view
+  triggerBtn.addEventListener("click", (e) => {
+    e.stopPropagation();
+    playerContainer.classList.toggle("expanded");
+  });
+
+  // Prevent clicks on player card from closing it
+  document.getElementById("music-card").addEventListener("click", (e) => {
+    e.stopPropagation();
+  });
+
+  // Close player when clicking anywhere else on page
+  document.addEventListener("click", () => {
+    playerContainer.classList.remove("expanded");
+  });
+
+  // Buttons event listeners
+  playBtn.addEventListener("click", togglePlay);
+  nextBtn.addEventListener("click", nextTrack);
+  prevBtn.addEventListener("click", prevTrack);
+
+  // Audio events
+  audio.addEventListener("timeupdate", updateProgress);
+  audio.addEventListener("ended", () => {
+    let nextIndex = (currentTrackIndex + 1) % tracks.length;
+    loadTrack(nextIndex);
+    playTrack();
+  });
+
+  // Progress Bar click handler
+  progressContainer.addEventListener("click", setProgress);
+
+  // Volume slider handler
+  volumeSlider.addEventListener("input", (e) => {
+    audio.volume = e.target.value;
+    localStorage.setItem("portfolio-music-volume", e.target.value);
+  });
+
+  // Retrieve stored volume preference
+  const storedVolume = localStorage.getItem("portfolio-music-volume");
+  if (storedVolume !== null) {
+    audio.volume = parseFloat(storedVolume);
+    volumeSlider.value = storedVolume;
+  }
+
+  // Playlist clicks
+  playlistItems.forEach((item) => {
+    item.addEventListener("click", () => {
+      const idx = parseInt(item.getAttribute("data-index"));
+      loadTrack(idx);
+      playTrack();
+    });
+  });
+
   window.addEventListener("scroll", updateActiveLink);
   updateActiveLink(); // Trigger on load
 });
