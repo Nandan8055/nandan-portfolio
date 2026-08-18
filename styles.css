@@ -1706,3 +1706,98 @@ a {
     left: 16px;
   }
 }
+
+/* Premium Cinematic Closing Section */
+.closing-section {
+  background: #000000;
+  padding: 160px 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  border-top: 1px solid rgba(255, 255, 255, 0.03);
+  position: relative;
+  overflow: hidden;
+}
+
+.closing-container {
+  max-width: 900px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 48px;
+}
+
+.closing-quote {
+  font-family: 'Inter', sans-serif;
+  font-size: 38px;
+  font-weight: 300;
+  line-height: 1.5;
+  color: #ffffff;
+  margin: 0;
+  letter-spacing: -0.02em;
+  opacity: 0.95;
+  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+}
+
+.closing-signature {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  margin-top: 12px;
+}
+
+.signature-line {
+  width: 32px;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.25);
+  transition: width 0.5s ease;
+}
+
+.closing-section:hover .signature-line {
+  width: 64px;
+}
+
+.signature-name {
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.4em;
+  color: rgba(255, 255, 255, 0.45);
+  margin-left: 0.4em; /* compensates for last letter-spacing to center text precisely */
+  transition: color 0.3s ease;
+}
+
+.closing-section:hover .signature-name {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+/* Responsive styles for cinematic closing */
+@media (max-width: 768px) {
+  .closing-section {
+    padding: 110px 24px;
+  }
+  
+  .closing-quote {
+    font-size: 28px;
+    line-height: 1.45;
+  }
+  
+  .closing-container {
+    gap: 36px;
+  }
+}
+
+@media (max-width: 480px) {
+  .closing-section {
+    padding: 80px 20px;
+  }
+  
+  .closing-quote {
+    font-size: 22px;
+    line-height: 1.4;
+  }
+}
