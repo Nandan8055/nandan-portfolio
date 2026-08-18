@@ -1749,14 +1749,115 @@ a {
 
 @media (max-width: 768px) {
   .floating-music-player {
-    bottom: 16px;
-    left: 16px;
-    right: 16px;
-    width: auto;
+    bottom: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    width: 100% !important;
+    position: fixed !important;
+    z-index: 2500 !important;
   }
+
   .music-card {
-    width: 100%;
-    max-width: none;
+    width: 100% !important;
+    max-width: none !important;
+    border-radius: 12px 12px 0 0 !important; /* Snap to bottom viewport edge */
+    padding: 12px 16px !important;
+    background: rgba(10, 10, 10, 0.72) !important;
+    backdrop-filter: blur(20px) !important;
+    -webkit-backdrop-filter: blur(20px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.08) !important;
+    border-bottom: none !important;
+    box-shadow: 0 -8px 32px rgba(0, 0, 0, 0.5) !important;
+    display: grid !important;
+    grid-template-columns: 1fr auto auto auto !important; /* Header | Play | Next | Close */
+    align-items: center !important;
+    gap: 12px !important;
+  }
+
+  .music-header {
+    width: auto !important;
+    gap: 8px !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  .music-album-container {
+    width: 36px !important;
+    height: 36px !important;
+    border-radius: 4px !important;
+    flex-shrink: 0 !important;
+  }
+
+  .music-info {
+    max-width: 140px !important;
+  }
+
+  .music-title {
+    font-size: 13px !important;
+    font-weight: 600 !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    display: block !important;
+  }
+
+  .music-subtitle {
+    font-size: 10px !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    display: block !important;
+  }
+
+  /* Progress bar horizontal top overlay line (Spotify Style) */
+  .music-progress-wrapper {
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    width: 100% !important;
+    height: 2px !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  .music-time-row {
+    display: none !important; /* Hide times on mobile mini player */
+  }
+
+  .music-progress-bar-bg {
+    height: 2px !important;
+    border-radius: 0 !important;
+    background: rgba(255, 255, 255, 0.15) !important;
+  }
+
+  .music-progress-bar {
+    height: 2px !important;
+    border-radius: 0 !important;
+  }
+
+  .music-controls {
+    width: auto !important;
+    gap: 12px !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    display: flex !important;
+    align-items: center !important;
+  }
+
+  /* Hide prev, visualizer, volume button and panel on mobile mini player */
+  #prev-btn,
+  #card-visualizer,
+  #volume-toggle-btn,
+  .music-volume-panel {
+    display: none !important;
+  }
+
+  .music-close-btn {
+    position: static !important;
+    padding: 6px !important;
+    margin: 0 !important;
+    color: rgba(255, 255, 255, 0.5) !important;
   }
 }
 
