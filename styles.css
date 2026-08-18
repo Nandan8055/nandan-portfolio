@@ -311,6 +311,10 @@ a {
   overflow: visible;
 }
 
+.top-nav-row {
+  display: contents;
+}
+
 .top-nav-links::-webkit-scrollbar {
   display: none;
 }
@@ -396,10 +400,6 @@ a {
 
 .mobile-back-link {
   display: none !important;
-}
-
-.nav-break {
-  display: none;
 }
 
 .hero-section {
@@ -1075,10 +1075,21 @@ a {
   }
 
   .top-nav-links {
-    gap: 6px 4px;
-    flex-wrap: wrap;
-    justify-content: center;
-    overflow-x: visible;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    gap: 8px !important;
+    width: 100% !important;
+  }
+
+  .top-nav-row {
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
+    justify-content: center !important;
+    align-items: center !important;
+    gap: 6px !important;
+    width: 100% !important;
   }
 
   .top-nav-link {
@@ -1092,13 +1103,6 @@ a {
 
   .journey-link {
     display: none !important;
-  }
-
-  .nav-break {
-    display: block !important;
-    width: 100% !important;
-    height: 0 !important;
-    flex-basis: 100% !important;
   }
 
   .row2-link {
