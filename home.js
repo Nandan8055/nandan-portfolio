@@ -642,55 +642,55 @@ function handleContactSubmit(event) {
       setTimeout(() => {
         form.reset();
         btn.disabled = false;
-        btn.textContent = "Submit";
-        success.hidden = true;
-      }, 4000);
-    });
-}
-
-// Dynamic scrollspy for capsule navbar
-document.addEventListener("DOMContentLoaded", () => {
-  const navLinks = document.querySelectorAll(".top-nav-link");
-  
-  // Set Home as active initially
-  const homeLink = Array.from(navLinks).find(link => link.getAttribute("href") === "#");
-  if (homeLink) homeLink.classList.add("active");
-
-  function updateActiveLink() {
-    const scrollPosition = window.scrollY + window.innerHeight / 3;
-    let activeLink = homeLink;
-
-    navLinks.forEach(link => {
-      const targetId = link.getAttribute("href");
-      if (targetId && targetId.startsWith("#") && targetId.length > 1) {
-        const targetElement = document.querySelector(targetId);
-        if (targetElement) {
-          const elementTop = targetElement.getBoundingClientRect().top + window.scrollY;
-          if (scrollPosition >= elementTop) {
-            activeLink = link;
-          }
-        }
-      }
-    });
-
-    navLinks.forEach(link => {
-      if (link.getAttribute("href").startsWith("#")) {
-        link.classList.remove("active");
-      }
-    });
-    
-    if (activeLink) {
-      activeLink.classList.add("active");
-    }
+modalRole.textContent = content.role;
+  if (content.link) {
+    modalLink.href = content.link;
+    modalLink.textContent = content.linkLabel || "Open link";
+    modalLink.hidden = false;
+  } else {
+    modalLink.hidden = true;
+    modalLink.removeAttribute("href");
   }
+  modalList.replaceChildren(
+    ...content.points.map((point) => {
+      const item = document.createElement("li");
+      item.textContent = point;
+      return item;
+    })
+  );
 
-  // ==========================================
-  // FLOATING MUSIC PLAYER CONTROLLER SYSTEM
-  // ==========================================
-  const tracks = [
-    { title: "Ezio's Family", src: "Music/Assassin's Creed 2 Ezio's Family.mp3", cover: "Music/Assassin's Creed 2 Ezio's Family.jpg" },
-    { title: "Gangsta's Paradise", src: "Music/Gangsta's Paradise.mp3", cover: "Music/Gangsta's Paradise.jpg" },
-    { title: "Way Down We Go", src: "Music/way down we go.mp3", cover: "Music/way down we go.jpg" }
+  modalRelated.replaceChildren();
+  if (content.related?.length || content.gallery?.length) {
+    const heading = document.createElement("h3");
+    heading.textContent = content.relatedTitle || content.galleryTitle || "Related";
+    modalRelated.append(heading);
+
+    const row = document.createElement("div");
+    row.className = content.gallery?.length ? "related-row certificate-gallery" : "related-row";
+    (content.related || content.gallery).forEach((relatedItem) => {
+      const button = document.createElement("button");
+      button.className = "related-card";
+      button.type = "button";
+      button.addEventListener("click", () => {
+        if (relatedItem.id) {
+          openModal(relatedItem.id);
+        } else {
+          openCertificateImage(relatedItem);
+        }
+      });
+
+      const image = document.createElement("img");
+      image.src = relatedItem.image;
+      image.alt = relatedItem.label;
+
+      const label = document.createElement("span");
+      label.textContent = relatedItem.label;
+
+      button.append(image, label);
+      row.append(button);
+    });
+    modalRelated.append(row);
+    modalRelated.hidden = false;
   } else {
     modalRelated.hidden = true;
   }
@@ -883,14 +883,15 @@ document.addEventListener("DOMContentLoaded", () => {
   // FLOATING MUSIC PLAYER CONTROLLER SYSTEM
   // ==========================================
   const tracks = [
-    { title: "Ezio's Family", src: "Music/Assassin's Creed 2 Ezio's Family.mp3", cover: "Music/Assassin's Creed 2 Ezio's Family.jpg" },
-    { title: "Gangsta's Paradise", src: "Music/Gangsta's Paradise.mp3", cover: "Music/Gangsta's Paradise.jpg" },
-    { title: "Way Down We Go", src: "Music/way down we go.mp3", cover: "Music/way down we go.jpg" }
+    { title: "Ezio's Family", src: "Music/ezios-family.track", cover: "Music/Assassin's Creed 2 Ezio's Family.jpg" },
+    { title: "Gangsta's Paradise", src: "Music/gangstas-paradise.track", cover: "Music/Gangsta's Paradise.jpg" },
+    { title: "Way Down We Go", src: "Music/way-down-we-go.track", cover: "Music/way down we go.jpg" }
   ];
 
   let currentTrackIndex = 0;
   let isPlaying = false;
   const audio = new Audio();
+
   // Elements
   const playerContainer = document.getElementById("music-player");
   const playBtn = document.getElementById("play-btn");
@@ -907,6 +908,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const volumeToggleBtn = document.getElementById("volume-toggle-btn");
   const volumePanel = document.getElementById("music-volume-panel");
   const cardVisualizer = document.getElementById("card-visualizer");
+  const closeBtn = document.getElementById("music-close-btn");
 
   // Load initial track
   function loadTrack(index) {
@@ -1022,6 +1024,13 @@ document.addEventListener("DOMContentLoaded", () => {
   volumeToggleBtn.addEventListener("click", (e) => {
     e.stopPropagation();
     volumePanel.hidden = !volumePanel.hidden;
+  });
+
+  // Close music player
+  closeBtn.addEventListener("click", (e) => {
+    e.stopPropagation();
+    playerContainer.style.display = "none";
+    pauseTrack();
   });
 
   // Audio events
