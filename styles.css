@@ -396,6 +396,10 @@ a {
   display: none !important;
 }
 
+.nav-break {
+  display: none;
+}
+
 .hero-section {
   align-items: flex-end;
   display: flex;
@@ -1069,19 +1073,35 @@ a {
   }
 
   .top-nav-links {
-    gap: 8px 6px;
+    gap: 6px 4px;
     flex-wrap: wrap;
     justify-content: center;
     overflow-x: visible;
   }
 
   .top-nav-link {
-    font-size: 0.8rem;
-    padding: 6px 10px;
+    font-size: 0.82rem;
+    padding: 6px 8px;
   }
 
   .top-nav-link.active::before {
     display: none !important;
+  }
+
+  .journey-link {
+    display: none !important;
+  }
+
+  .nav-break {
+    display: block !important;
+    width: 100% !important;
+    height: 0 !important;
+    flex-basis: 100% !important;
+  }
+
+  .row2-link {
+    font-size: 0.74rem !important;
+    opacity: 0.85 !important;
   }
 
   .floating-back {
