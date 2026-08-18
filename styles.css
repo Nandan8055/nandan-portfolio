@@ -1856,9 +1856,8 @@ a {
     align-items: center !important;
   }
 
-  /* Hide prev, visualizer, volume button and panel on mobile mini player */
+  /* Hide prev, volume button and panel on mobile mini player */
   #prev-btn,
-  #card-visualizer,
   #volume-toggle-btn,
   .music-volume-panel {
     display: none !important;
