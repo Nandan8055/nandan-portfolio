@@ -688,9 +688,9 @@ document.addEventListener("DOMContentLoaded", () => {
   // FLOATING MUSIC PLAYER CONTROLLER SYSTEM
   // ==========================================
   const tracks = [
-    { title: "Ezio's Family (Assassin's Creed 2)", src: "Music/Assassin's Creed 2 Ezio's Family.mp3" },
-    { title: "Gangsta's Paradise", src: "Music/Gangsta's Paradise.mp3" },
-    { title: "Way Down We Go", src: "Music/way down we go.mp3" }
+    { title: "Ezio's Family", src: "Music/Assassin's Creed 2 Ezio's Family.mp3", cover: "Music/Assassin's Creed 2 Ezio's Family.jpg" },
+    { title: "Gangsta's Paradise", src: "Music/Gangsta's Paradise.mp3", cover: "Music/Gangsta's Paradise.jpg" },
+    { title: "Way Down We Go", src: "Music/way down we go.mp3", cover: "Music/way down we go.jpg" }
   ];
 
   let currentTrackIndex = 0;
@@ -704,11 +704,12 @@ document.addEventListener("DOMContentLoaded", () => {
   const playIcon = document.getElementById("play-icon");
   const prevBtn = document.getElementById("prev-btn");
   const nextBtn = document.getElementById("next-btn");
-  const visualizer = document.getElementById("music-visualizer");
   const musicTitle = document.getElementById("music-title");
+  const musicCover = document.getElementById("music-cover");
   const progressBar = document.getElementById("music-progress-bar");
   const progressContainer = document.getElementById("music-progress-container");
-  const timeDisplay = document.getElementById("music-time-display");
+  const currentTimeDisplay = document.getElementById("music-current-time");
+  const durationDisplay = document.getElementById("music-duration");
   const volumeSlider = document.getElementById("volume-slider");
   const playlistItems = document.querySelectorAll("#music-playlist .playlist-item");
 
@@ -717,6 +718,8 @@ document.addEventListener("DOMContentLoaded", () => {
     currentTrackIndex = index;
     audio.src = tracks[index].src;
     musicTitle.textContent = tracks[index].title;
+    musicCover.src = tracks[index].cover;
+    musicCover.alt = `${tracks[index].title} Cover Art`;
     
     // Update active state in playlist DOM
     playlistItems.forEach((item, idx) => {
@@ -726,6 +729,11 @@ document.addEventListener("DOMContentLoaded", () => {
         item.classList.remove("active");
       }
     });
+
+    // Reset progress details on load
+    progressBar.style.width = "0%";
+    currentTimeDisplay.textContent = "0:00";
+    durationDisplay.textContent = "0:00";
   }
 
   loadTrack(currentTrackIndex);
@@ -734,9 +742,8 @@ document.addEventListener("DOMContentLoaded", () => {
   function playTrack() {
     isPlaying = true;
     audio.play().then(() => {
-      playIcon.innerHTML = `<rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/>`;
+      playIcon.innerHTML = `<path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>`;
       triggerBtn.classList.add("playing");
-      visualizer.classList.add("playing");
     }).catch(err => {
       console.log("Autoplay blocked or playback error:", err);
       isPlaying = false;
@@ -747,9 +754,8 @@ document.addEventListener("DOMContentLoaded", () => {
   function pauseTrack() {
     isPlaying = false;
     audio.pause();
-    playIcon.innerHTML = `<polygon points="5 3 19 12 5 21 5 3"/>`;
+    playIcon.innerHTML = `<path d="M8 5v14l11-7z"/>`;
     triggerBtn.classList.remove("playing");
-    visualizer.classList.remove("playing");
   }
 
   // Play/Pause Action
@@ -779,6 +785,14 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
+  // Format times helper
+  const formatTime = (time) => {
+    if (isNaN(time)) return "0:00";
+    const mins = Math.floor(time / 60);
+    const secs = Math.floor(time % 60);
+    return `${mins}:${secs < 10 ? '0' : ''}${secs}`;
+  };
+
   // Update Progress & Time
   function updateProgress(e) {
     const { duration, currentTime } = e.srcElement;
@@ -788,21 +802,15 @@ document.addEventListener("DOMContentLoaded", () => {
     const progressPercent = (currentTime / duration) * 100;
     progressBar.style.width = `${progressPercent}%`;
 
-    // Format times
-    const formatTime = (time) => {
-      const mins = Math.floor(time / 60);
-      const secs = Math.floor(time % 60);
-      return `${mins}:${secs < 10 ? '0' : ''}${secs}`;
-    };
-
-    timeDisplay.textContent = `${formatTime(currentTime)} / ${formatTime(duration)}`;
+    currentTimeDisplay.textContent = formatTime(currentTime);
+    durationDisplay.textContent = formatTime(duration);
   }
 
   // Set Progress on Seek
   function setProgress(e) {
-    const progressBg = progressContainer.querySelector(".music-progress-bar-bg");
-    const width = progressBg.clientWidth;
-    const clickX = e.offsetX;
+    const rect = progressContainer.getBoundingClientRect();
+    const clickX = e.clientX - rect.left;
+    const width = rect.width;
     const duration = audio.duration;
     if (isNaN(duration)) return;
     
@@ -832,6 +840,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Audio events
   audio.addEventListener("timeupdate", updateProgress);
+  audio.addEventListener("loadedmetadata", () => {
+    durationDisplay.textContent = formatTime(audio.duration);
+  });
   audio.addEventListener("ended", () => {
     let nextIndex = (currentTrackIndex + 1) % tracks.length;
     loadTrack(nextIndex);
