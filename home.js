@@ -116,6 +116,20 @@ const modalContent = {
       "Award recognizing ownership, reliability, and follow-through."
     ]
   },
+  "generative-ai": {
+    kicker: "Certificate",
+    title: "Generative AI for Everyone",
+    role: "DeepLearning.AI certification",
+    image: "Certificates and Award/Generative AI for Everyone .png",
+    link: "https://www.coursera.org/account/accomplishments/verify/NKVJ92CRCJEX",
+    linkLabel: "Verify Certificate",
+    points: [
+      "Gained a foundational understanding of Generative AI, including Large Language Models (LLMs), neural networks, and prompt engineering.",
+      "Learned to identify business opportunities, assess feasibility, and structure generative AI projects effectively.",
+      "Explored critical topics around AI ethics, societal impact, bias mitigation, and responsible deployment strategies.",
+      "Acquired insights from AI pioneer Andrew Ng on leveraging generative AI tools in daily operations and business strategy."
+    ]
+  },
   "google-sheets": {
     kicker: "Certificate",
     title: "Data Analysis in Google Sheets",
